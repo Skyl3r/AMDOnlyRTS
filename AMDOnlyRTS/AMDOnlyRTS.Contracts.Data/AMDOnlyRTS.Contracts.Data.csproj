@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\Controller\Controllers\ILocalController.cs" />
+    <Compile Include="Interfaces\Controller\Controllers\IRemoteController.cs" />
     <Compile Include="Interfaces\GameEngine\GameObject\Structure\UnitFactory\IAirFactory.cs" />
     <Compile Include="Interfaces\GameEngine\GameObject\Unit\IAirUnit.cs" />
     <Compile Include="Interfaces\GameEngine\GameObject\Structure\ResourceCollector\IEnergy.cs" />
@@ -52,7 +54,7 @@
     <Compile Include="Interfaces\GameEngine\GameObject\Structure\UnitFactory\INavalFactory.cs" />
     <Compile Include="Interfaces\GameEngine\GameObject\Unit\INavalUnit.cs" />
     <Compile Include="Interfaces\GameEngine\IPlayer.cs" />
-    <Compile Include="Interfaces\GameEngine\IPlayerController.cs" />
+    <Compile Include="Interfaces\Controller\IPlayerController.cs" />
     <Compile Include="Interfaces\GameEngine\GameObject\Structure\ResourceCollector\IResourceCollector.cs" />
     <Compile Include="Interfaces\GameEngine\ISpawnPoint.cs" />
     <Compile Include="Interfaces\GameEngine\GameObject\Structure\IStaticDefense.cs" />

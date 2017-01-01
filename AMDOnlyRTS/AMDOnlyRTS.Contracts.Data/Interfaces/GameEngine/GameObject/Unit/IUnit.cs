@@ -8,5 +8,7 @@ namespace AMDOnlyRTS.Contracts.Data.Interfaces.GameEngine
 {
 	public interface IUnit : IGameObject
 	{
+
+
 	}
 }
