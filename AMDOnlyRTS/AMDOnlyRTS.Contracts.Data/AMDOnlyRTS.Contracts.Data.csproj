@@ -40,7 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Implemetations\Networking\Lobby.cs" />
+    <Compile Include="Interfaces\Controller\Controllers\ILocalController.cs" />
+    <Compile Include="Interfaces\Controller\Controllers\IRemoteController.cs" />
     <Compile Include="Interfaces\GameEngine\GameObject\Structure\UnitFactory\IAirFactory.cs" />
     <Compile Include="Interfaces\GameEngine\GameObject\Unit\IAirUnit.cs" />
     <Compile Include="Interfaces\GameEngine\GameObject\Structure\ResourceCollector\IEnergy.cs" />
@@ -53,7 +54,7 @@
     <Compile Include="Interfaces\GameEngine\GameObject\Structure\UnitFactory\INavalFactory.cs" />
     <Compile Include="Interfaces\GameEngine\GameObject\Unit\INavalUnit.cs" />
     <Compile Include="Interfaces\GameEngine\IPlayer.cs" />
-    <Compile Include="Interfaces\GameEngine\IPlayerController.cs" />
+    <Compile Include="Interfaces\Controller\IPlayerController.cs" />
     <Compile Include="Interfaces\GameEngine\GameObject\Structure\ResourceCollector\IResourceCollector.cs" />
     <Compile Include="Interfaces\GameEngine\ISpawnPoint.cs" />
     <Compile Include="Interfaces\GameEngine\GameObject\Structure\IStaticDefense.cs" />
@@ -63,13 +64,12 @@
     <Compile Include="Interfaces\GameEngine\GameObject\Structure\UnitFactory\IUnitFactory.cs" />
     <Compile Include="Interfaces\Networking\IAction.cs" />
     <Compile Include="Interfaces\Networking\IKeyPress.cs" />
-    <Compile Include="Interfaces\Networking\ILobby.cs" />
     <Compile Include="Interfaces\Networking\IMouseClick.cs" />
     <Compile Include="Interfaces\Networking\ISelectionBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Implemetations\GameEngine\" />
+    <Folder Include="Implemetations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
