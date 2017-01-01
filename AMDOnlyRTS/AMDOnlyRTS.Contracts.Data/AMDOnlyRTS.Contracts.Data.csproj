@@ -40,11 +40,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\GameEngine\IAirFactory.cs" />
+    <Compile Include="Interfaces\GameEngine\IAirUnit.cs" />
+    <Compile Include="Interfaces\GameEngine\IEnergy.cs" />
+    <Compile Include="Interfaces\GameEngine\IGameObject.cs" />
+    <Compile Include="Interfaces\GameEngine\IGarrison.cs" />
+    <Compile Include="Interfaces\GameEngine\ILandFactory.cs" />
+    <Compile Include="Interfaces\GameEngine\ILandUnit.cs" />
+    <Compile Include="Interfaces\GameEngine\IMap.cs" />
+    <Compile Include="Interfaces\GameEngine\IMass.cs" />
+    <Compile Include="Interfaces\GameEngine\INavalFactory.cs" />
+    <Compile Include="Interfaces\GameEngine\INavalUnit.cs" />
+    <Compile Include="Interfaces\GameEngine\IPlayer.cs" />
+    <Compile Include="Interfaces\GameEngine\IPlayerController.cs" />
+    <Compile Include="Interfaces\GameEngine\IResourceCollector.cs" />
+    <Compile Include="Interfaces\GameEngine\ISpawnPoint.cs" />
+    <Compile Include="Interfaces\GameEngine\IStaticDefense.cs" />
+    <Compile Include="Interfaces\GameEngine\IStructure.cs" />
+    <Compile Include="Interfaces\GameEngine\ISupply.cs" />
+    <Compile Include="Interfaces\GameEngine\IUnit.cs" />
+    <Compile Include="Interfaces\GameEngine\IUnitFactory.cs" />
+    <Compile Include="Interfaces\Networking\IAction.cs" />
+    <Compile Include="Interfaces\Networking\IKeyPress.cs" />
+    <Compile Include="Interfaces\Networking\IMouseClick.cs" />
+    <Compile Include="Interfaces\Networking\ISelectionBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Implemetations\" />
-    <Folder Include="Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
