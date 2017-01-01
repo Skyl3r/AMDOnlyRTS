@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AMDOnlyRTS.Contracts.Data.Interfaces.GameEngine
 {
-	interface INavalFactory
+	public interface INavalFactory : IUnitFactory
 	{
 	}
 }

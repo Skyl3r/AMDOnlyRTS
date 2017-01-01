@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AMDOnlyRTS.Contracts.Data.Interfaces.GameEngine
 {
-	interface IStaticDefense
+	public interface IStaticDefense : IStructure
 	{
 	}
 }
