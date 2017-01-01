@@ -1,0 +1,5 @@
+C:\Users\davis\OneDrive\Documents\AMDOnlyRTS\AMDOnlyRTS\AMDOnlyRTS.Networking\obj\Debug\AMDOnlyRTS.Networking.csprojResolveAssemblyReference.cache
+C:\Users\davis\OneDrive\Documents\AMDOnlyRTS\AMDOnlyRTS\AMDOnlyRTS.Networking\bin\Debug\AMDOnlyRTS.Networking.dll
+C:\Users\davis\OneDrive\Documents\AMDOnlyRTS\AMDOnlyRTS\AMDOnlyRTS.Networking\bin\Debug\AMDOnlyRTS.Networking.pdb
+C:\Users\davis\OneDrive\Documents\AMDOnlyRTS\AMDOnlyRTS\AMDOnlyRTS.Networking\obj\Debug\AMDOnlyRTS.Networking.dll
+C:\Users\davis\OneDrive\Documents\AMDOnlyRTS\AMDOnlyRTS\AMDOnlyRTS.Networking\obj\Debug\AMDOnlyRTS.Networking.pdb

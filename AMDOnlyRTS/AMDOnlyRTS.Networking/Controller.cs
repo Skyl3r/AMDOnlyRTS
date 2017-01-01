@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace AMDOnlyRTS.Networking
 {
-    class Controller
+    public class Controller
     {
+        public Controller()
+        {
+
+        }
+        public void CreateLobby()
+        {
+
+        }
     }
 }
