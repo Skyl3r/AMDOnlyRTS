@@ -10,6 +10,7 @@ namespace AMDOnlyRTS
 	{
 		static void Main(string[] args)
 		{
+			//Test
 		}
 	}
 }
