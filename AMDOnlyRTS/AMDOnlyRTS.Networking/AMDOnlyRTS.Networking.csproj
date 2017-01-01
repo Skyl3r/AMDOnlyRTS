@@ -43,6 +43,12 @@
     <Compile Include="Controller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AMDOnlyRTS.Contracts.Data\AMDOnlyRTS.Contracts.Data.csproj">
+      <Project>{5D64D301-C3D8-440C-95E6-466D20E91665}</Project>
+      <Name>AMDOnlyRTS.Contracts.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AMDOnlyRTS.Contracts.Data.Implemetations.Networking;
+using AMDOnlyRTS.Contracts.Data.Interfaces.Networking;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,13 +10,12 @@ namespace AMDOnlyRTS.Networking
 {
     public class Controller
     {
-        public Controller()
+        public ILobby CreateLobby()
         {
+            var lobby = new Lobby();
+            lobby.Players.Add()
 
-        }
-        public void CreateLobby()
-        {
-
+            return lobby;
         }
     }
 }
