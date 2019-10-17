@@ -1,12 +1,5 @@
-﻿using AMDOnlyRTS.Contracts.Data.Classes.GameEngine.GameObject.Unit;
-using BrokenDigSky.AmdOnlyRts.Domain.Interfaces.GameEngine;
-using BrokenDigSky.AmdOnlyRts.Domain.Interfaces.GameEngine.Mod;
-using System;
+﻿using BrokenDigSky.AmdOnlyRts.Domain.Interfaces.GameEngine.Mod;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AMDOnlyRTS.Contracts.Data.Classes.GameEngine.Mod
 {

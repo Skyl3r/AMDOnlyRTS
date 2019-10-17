@@ -1,13 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AMDOnlyRTS.Contracts.Data.Classes.GameEngine.GameObject.Structure;
 using AMDOnlyRTS.Contracts.Data.Classes.GameEngine.GameObject.Structure.ResourceCollector;
 using AMDOnlyRTS.Contracts.Data.Classes.GameEngine.GameObject.Structure.UnitFactory;
 using AMDOnlyRTS.Contracts.Data.Classes.GameEngine.GameObject.Unit;
-using System.IO;
 using AMDOnlyRTS.GameEngine.LuaHelp;
 using BrokenDigSky.AmdOnlyRts.Domain.Interfaces.GameEngine.Mod;
 

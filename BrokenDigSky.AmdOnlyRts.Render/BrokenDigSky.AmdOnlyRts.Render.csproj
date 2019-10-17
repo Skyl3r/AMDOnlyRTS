@@ -8,4 +8,8 @@
     <ProjectReference Include="..\BrokenDigSky.AmdOnlyRts.Domain\BrokenDigSky.AmdOnlyRts.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="love2DCS" Version="11.0.40" />
+  </ItemGroup>
+
 </Project>

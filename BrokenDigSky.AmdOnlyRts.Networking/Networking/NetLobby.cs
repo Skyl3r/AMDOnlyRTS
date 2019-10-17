@@ -1,10 +1,7 @@
-﻿using BrokenDigSky.AmdOnlyRts.Domain.Interfaces.Networking;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BrokenDigSky.AmdOnlyRts.Domain.Interfaces.GameEngine;
+using BrokenDigSky.AmdOnlyRts.Domain.Interfaces.Networking;
 
 namespace BrokenDigSky.AmdOnlyRts.Networking
 {
