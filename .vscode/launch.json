@@ -9,7 +9,7 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${workspaceFolder}/BrokenDigSky.AmdOnlyRts/bin/Debug/netcoreapp2.2/BrokenDigSky.AmdOnlyRts.Core.dll",
+      "program": "${workspaceFolder}/BrokenDigSky.AmdOnlyRts/bin/Debug/netcoreapp3.0/BrokenDigSky.AmdOnlyRts.Core.dll",
       "args": [],
       "cwd": "${workspaceFolder}",
       "console": "internalConsole",
