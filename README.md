@@ -1,5 +1,5 @@
 # AMD only RTS
-This is an attempt at a highly moddable, cross platform and open source RTS game (That of course only runs on AMD). Our goal is to be modular on an unprecidented level to allow flexibility for design changes dawn the road.
+This is at a highly moddable, cross platform and open source RTS game (That only runs on AMD).
 
 
 ## Index
