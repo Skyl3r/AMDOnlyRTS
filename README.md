@@ -24,9 +24,6 @@ Freenode IRC: #AMDOnlyRTS
 
 ### Linux
 
-#### Requirements
-- `git`, `dotnet-sdk-3.0`
-
 1. Install dotnet-sdk-3.0 via [Microsoft's repository](https://dotnet.microsoft.com/download/linux-package-manager/rhel7/sdk-3.0.100)
 1. (Optional) Install [Visual Studio Code](https://code.visualstudio.com/download)
 1. Clone repository: `git clone https://github.com/Skyl3r/AMDOnlyRTS`
