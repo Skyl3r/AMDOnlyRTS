@@ -20,4 +20,4 @@ Freenode IRC: #amdonlyrts
     - Run build task
 - Process (General)
     - Open the project root
-    - run dotnet build ./Core/AmdOnlyRts.csproj
+    - run dotnet build ./Core/AmdOnlyRts.Core.csproj
