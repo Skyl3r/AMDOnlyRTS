@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BrokenDigSky.AmdOnlyRts.Domain.Interfaces.GameEngine.Mod
+namespace AmdOnlyRts.Domain.Interfaces.GameEngine.Mod
 {
 	public interface IMod
 	{

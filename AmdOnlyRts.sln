@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmdOnlyRts.Core", "Core\AmdOnlyRts.Core.csproj", "{40C2A6C1-231A-4652-87CB-5C69A761A3EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmdOnlyRts.Domain", "Domain\AmdOnlyRts.Domain.csproj", "{000531AD-5987-4168-9567-CEAD842E1B04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmdOnlyRts.Networking", "Networking\AmdOnlyRts.Networking.csproj", "{A00B0D18-7D2C-4DB1-A424-47052856A6A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmdOnlyRts.Render", "Render\AmdOnlyRts.Render.csproj", "{A9FEFF6C-1C43-41A2-819B-BAD2B4E6BB90}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{40C2A6C1-231A-4652-87CB-5C69A761A3EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40C2A6C1-231A-4652-87CB-5C69A761A3EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40C2A6C1-231A-4652-87CB-5C69A761A3EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40C2A6C1-231A-4652-87CB-5C69A761A3EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{000531AD-5987-4168-9567-CEAD842E1B04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{000531AD-5987-4168-9567-CEAD842E1B04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{000531AD-5987-4168-9567-CEAD842E1B04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{000531AD-5987-4168-9567-CEAD842E1B04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A00B0D18-7D2C-4DB1-A424-47052856A6A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A00B0D18-7D2C-4DB1-A424-47052856A6A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A00B0D18-7D2C-4DB1-A424-47052856A6A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A00B0D18-7D2C-4DB1-A424-47052856A6A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9FEFF6C-1C43-41A2-819B-BAD2B4E6BB90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9FEFF6C-1C43-41A2-819B-BAD2B4E6BB90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9FEFF6C-1C43-41A2-819B-BAD2B4E6BB90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9FEFF6C-1C43-41A2-819B-BAD2B4E6BB90}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

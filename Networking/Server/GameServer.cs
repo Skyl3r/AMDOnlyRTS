@@ -1,10 +1,9 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using System.Threading;
 using System.Threading.Tasks;
 using System;
 
-namespace BrokenDigSky.AmdOnlyRts.Networking.Server
+namespace AmdOnlyRts.Networking.Server
 {
   public class GameServer : IDisposable
   {

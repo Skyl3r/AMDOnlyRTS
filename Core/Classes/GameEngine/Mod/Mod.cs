@@ -5,8 +5,8 @@ using AMDOnlyRTS.Contracts.Data.Classes.GameEngine.GameObject.Structure;
 using AMDOnlyRTS.Contracts.Data.Classes.GameEngine.GameObject.Structure.ResourceCollector;
 using AMDOnlyRTS.Contracts.Data.Classes.GameEngine.GameObject.Structure.UnitFactory;
 using AMDOnlyRTS.Contracts.Data.Classes.GameEngine.GameObject.Unit;
-using AMDOnlyRTS.GameEngine.LuaHelp;
-using BrokenDigSky.AmdOnlyRts.Domain.Interfaces.GameEngine.Mod;
+using AMDOnlyRTS.Core.LuaHelp;
+using AmdOnlyRts.Domain.Interfaces.GameEngine.Mod;
 
 namespace AMDOnlyRTS.Contracts.Data.Classes.GameEngine.Mod
 {
@@ -36,9 +36,9 @@ namespace AMDOnlyRTS.Contracts.Data.Classes.GameEngine.Mod
 			Data.Add(typeof(Mass), new List<object>());
 			Data.Add(typeof(Supply), new List<object>());
 
-			Data.Add(typeof(Map), new List<object>());
-			Data.Add(typeof(SpawnPoint), new List<object>());
-			Data.Add(typeof(Player), new List<object>());
+			// Data.Add(typeof(Map), new List<object>());
+			// Data.Add(typeof(SpawnPoint), new List<object>());
+			// Data.Add(typeof(Player), new List<object>());
 		}
 
 

@@ -1,11 +1,9 @@
-using BrokenDigSky.AmdOnlyRts.Domain.Interfaces.Networking;
-using BrokenDigSky.AmdOnlyRts.Networking.Client;
-using BrokenDigSky.AmdOnlyRts.Networking.Server;
+using AmdOnlyRts.Networking.Client;
+using AmdOnlyRts.Networking.Server;
 using System;
-using System.Net;
 using System.Threading.Tasks;
 
-namespace BrokenDigSky.AmdOnlyRts.Networking
+namespace AmdOnlyRts.Networking
 {
     public class Program
     {

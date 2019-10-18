@@ -1,9 +1,9 @@
-using BrokenDigSky.AmdOnlyRts.Networking.Server.Hubs;
+using AmdOnlyRts.Networking.Server.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BrokenDigSky.AmdOnlyRts.Networking.Server
+namespace AmdOnlyRts.Networking.Server
 {
   public class Startup
   {

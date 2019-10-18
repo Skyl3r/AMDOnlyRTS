@@ -1,7 +1,8 @@
-﻿using BrokenDigSky.AmdOnlyRts.Domain.Interfaces.GameEngine;
+﻿using AmdOnlyRts.Domain.Interfaces.Game;
 
-namespace AMDOnlyRTS.Contracts.Data.Classes.GameEngine
+namespace AMDOnlyRTS.Core.GameEngine
 {
+	//We should consider moving this to domain
 	public class Map : IMap
 	{
 

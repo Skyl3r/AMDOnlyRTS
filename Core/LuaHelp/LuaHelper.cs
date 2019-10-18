@@ -2,7 +2,7 @@
 using System.IO;
 using NLua;
 
-namespace AMDOnlyRTS.GameEngine.LuaHelp
+namespace AMDOnlyRTS.Core.LuaHelp
 {
 	public class LuaHelper
 	{

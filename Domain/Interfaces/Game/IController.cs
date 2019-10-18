@@ -1,6 +1,4 @@
-﻿using BrokenDigSky.AmdOnlyRts.Domain.Interfaces.GameEngine;
-
-namespace BrokenDigSky.AmdOnlyRts.Domain.Interfaces
+﻿namespace AmdOnlyRts.Domain.Interfaces.Game
 {
 	public interface IController
 	{

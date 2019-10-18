@@ -1,6 +1,6 @@
-﻿using BrokenDigSky.AmdOnlyRts.Domain.Interfaces;
+﻿using AmdOnlyRts.Domain.Interfaces.Game;
 
-namespace BrokenDigSky.AmdOnlyRts.Classes
+namespace AmdOnlyRts.Networking.Classes
 {
 	public class NetController : IController
 	{

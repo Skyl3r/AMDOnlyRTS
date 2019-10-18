@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
 
-namespace BrokenDigSky.AmdOnlyRts.Networking.Server.Hubs
+namespace AmdOnlyRts.Networking.Server.Hubs
 {
     public class GameHub : Hub
     {

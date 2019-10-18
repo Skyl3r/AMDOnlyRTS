@@ -1,7 +1,7 @@
 ﻿using AMDOnlyRTS.Contracts.Data.Classes.GameEngine.GameObject.Unit;
 using AMDOnlyRTS.Contracts.Data.Classes.GameEngine.Mod;
-using AMDOnlyRTS.GameEngine.LuaHelp;
-using BrokenDigSky.AmdOnlyRts.Networking;
+using AMDOnlyRTS.Core.LuaHelp;
+using AmdOnlyRts.Networking;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AMDOnlyRTS.GameEngine
+namespace AMDOnlyRTS.Core
 {
 	class Example
 	{

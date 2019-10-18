@@ -1,5 +1,5 @@
-﻿using BrokenDigSky.AmdOnlyRts.Domain.Interfaces.GameEngine;
-using System;
+﻿using System;
+using AmdOnlyRts.Domain.Interfaces.GameObject.Structure.ResourceCollector;
 
 namespace AMDOnlyRTS.Contracts.Data.Classes.GameEngine.GameObject.Structure.ResourceCollector
 {

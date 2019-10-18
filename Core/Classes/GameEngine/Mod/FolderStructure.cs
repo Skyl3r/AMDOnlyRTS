@@ -1,4 +1,4 @@
-﻿using BrokenDigSky.AmdOnlyRts.Domain.Interfaces.GameEngine.Mod;
+﻿using AmdOnlyRts.Domain.Interfaces.GameEngine.Mod;
 using System.Collections.Generic;
 
 namespace AMDOnlyRTS.Contracts.Data.Classes.GameEngine.Mod

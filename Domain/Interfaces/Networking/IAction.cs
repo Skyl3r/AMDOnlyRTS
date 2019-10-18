@@ -1,6 +1,6 @@
 ﻿
 
-namespace BrokenDigSky.AmdOnlyRts.Domain.Interfaces.Networking
+namespace AmdOnlyRts.Domain.Interfaces.Networking
 {
 	public interface IAction
 	{

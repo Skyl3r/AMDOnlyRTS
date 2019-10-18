@@ -8,7 +8,7 @@
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BrokenDigSky.AmdOnlyRts.Domain\BrokenDigSky.AmdOnlyRts.Domain.csproj" />
+    <ProjectReference Include="..\Domain\AmdOnlyRts.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="3.0.0" />

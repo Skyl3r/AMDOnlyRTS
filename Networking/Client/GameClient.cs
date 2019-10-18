@@ -1,9 +1,8 @@
 using System;
-using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR.Client;
 
-namespace BrokenDigSky.AmdOnlyRts.Networking.Client
+namespace AmdOnlyRts.Networking.Client
 {
   public class GameClient
   {

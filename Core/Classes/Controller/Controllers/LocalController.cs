@@ -1,8 +1,8 @@
-﻿using BrokenDigSky.AmdOnlyRts.Domain.Interfaces.Controller.Controllers;
+﻿using AmdOnlyRts.Domain.Interfaces.Game;
 
-namespace AMDOnlyRTS.Contracts.Data.Classes.Controller.Controllers
+namespace AMDOnlyRTS.Core.LocalController
 {
-	public class LocalController : ILocalController
+	public class LocalController : IController
 	{
 	}
 }

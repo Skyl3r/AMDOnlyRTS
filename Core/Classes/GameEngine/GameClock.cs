@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace AMDOnlyRTS.Contracts.Data.Classes.GameEngine
+namespace AMDOnlyRTS.Core.GameEngine
 {
     public delegate void OnTick(long clock);
 

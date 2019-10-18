@@ -1,6 +1,6 @@
 ﻿
 
-namespace BrokenDigSky.AmdOnlyRts.Domain.Interfaces.GameEngine
+namespace AmdOnlyRts.Domain.Interfaces.GameObject.Structure.ResourceCollector
 {
 	public interface IEnergy : IResourceCollector
 	{

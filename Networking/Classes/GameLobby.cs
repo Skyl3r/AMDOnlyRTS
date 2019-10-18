@@ -1,8 +1,8 @@
-﻿using BrokenDigSky.AmdOnlyRts.Domain.Interfaces.Networking;
-using System.Collections.Generic;
-using BrokenDigSky.AmdOnlyRts.Domain.Interfaces.GameEngine;
+﻿using System.Collections.Generic;
+using AmdOnlyRts.Domain.Interfaces.Game;
+using AmdOnlyRts.Domain.Interfaces.Networking;
 
-namespace BrokenDigSky.AmdOnlyRts.Classes
+namespace AmdOnlyRts.Networking.Classes
 {
 	class Lobby : ILobby
 	{

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BrokenDigSky.AmdOnlyRts.Domain\BrokenDigSky.AmdOnlyRts.Domain.csproj" />
+    <ProjectReference Include="..\Domain\AmdOnlyRts.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

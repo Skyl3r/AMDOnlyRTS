@@ -1,4 +1,4 @@
-﻿using BrokenDigSky.AmdOnlyRts.Domain.Interfaces.GameEngine;
+﻿using AmdOnlyRts.Domain.Interfaces.GameObject.Unit;
 using System;
 
 namespace AMDOnlyRTS.Contracts.Data.Classes.GameEngine.GameObject.Unit

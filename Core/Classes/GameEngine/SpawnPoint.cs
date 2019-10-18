@@ -1,6 +1,6 @@
-﻿using BrokenDigSky.AmdOnlyRts.Domain.Interfaces.GameEngine;
+﻿using AmdOnlyRts.Domain.Interfaces.Game;
 
-namespace AMDOnlyRTS.Contracts.Data.Classes.GameEngine
+namespace AMDOnlyRTS.Core.GameEngine
 {
 	public class SpawnPoint : ISpawnPoint
 	{

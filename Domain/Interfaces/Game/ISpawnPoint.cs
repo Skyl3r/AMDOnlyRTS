@@ -1,6 +1,6 @@
 ﻿
 
-namespace BrokenDigSky.AmdOnlyRts.Domain.Interfaces.GameEngine
+namespace AmdOnlyRts.Domain.Interfaces.Game
 {
 	public interface ISpawnPoint
 	{

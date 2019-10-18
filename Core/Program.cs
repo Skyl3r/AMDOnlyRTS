@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BrokenDigSky.AmdOnlyRts
+namespace AmdOnlyRts.Core
 {
     class Program
     {

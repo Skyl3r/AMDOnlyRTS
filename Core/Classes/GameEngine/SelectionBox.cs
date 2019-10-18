@@ -1,6 +1,6 @@
-using BrokenDigSky.AmdOnlyRts.Domain.Interfaces.Networking;
+using AmdOnlyRts.Domain.Interfaces.Networking;
 
-namespace AMDOnlyRTS.Contracts.Data.Classes.GameEngine
+namespace AMDOnlyRTS.Core.GameEngine
 {
 	public class SelectionBox : ISelectionBox
 	{
