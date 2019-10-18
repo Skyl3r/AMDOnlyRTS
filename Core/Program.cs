@@ -31,7 +31,6 @@ namespace AmdOnlyRts.Core
     {
       _log.LogDebug("Starting application");
 
-      _loveRenderer = new LoveRenderer();
       _loveRenderer.OnLoad += new OnLoad(OnRendererLoad);
       _loveRenderer.OnDraw += new OnDraw(OnRendererDraw);
       _loveRenderer.OnUpdate += new OnUpdate(OnRendererUpdate);
