@@ -9,15 +9,12 @@ This is an attempt at a highly moddable, cross platform and open source RTS game
   - [Linux](#linux)
   - [Windows](#windows)
 
-### Technology
+
+## Technology
 - .Net Core
 - Lua
 - SignalR
 - Love2d
-
-## Wanna get involved?
-### Contact us 
-Freenode IRC: #AMDOnlyRTS
 
 
 ## Build Guide
@@ -37,3 +34,8 @@ Freenode IRC: #AMDOnlyRTS
 1. Clone this repository using `git clone https://github.com/Skyl3r/AMDOnlyRTS` or  your choice of git client.
    - If you would like to install git, an easy way to do so is via the [Chocolatey package manager](https://chocolatey.org/install). With Chocolatey installed, simply run `choco install git`
 1. Open the root folder in Visual Studio Code, or to build from commandline run: `dotnet build Core/AmdOnlyRts.Core.csproj`
+
+
+## Wanna get involved?
+**Contact us on IRC** 
+Freenode IRC: #AMDOnlyRTS
