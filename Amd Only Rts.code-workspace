@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "Core"
+		},
+		{
+			"path": "Domain"
+		},
+		{
+			"path": "Networking"
+		},
+		{
+			"path": "Render"
+		},
+		{
+			"path": "1. Docs"
+		},
+		{
+			"path": ".vscode"
+		}
+	]
+}

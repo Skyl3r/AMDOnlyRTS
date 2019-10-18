@@ -1,0 +1,1 @@
+﻿Domain objects like data containing classes ond interfaces describing them
