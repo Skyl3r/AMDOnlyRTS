@@ -6,14 +6,14 @@ using AmdOnlyRts.Networking.Server;
 
 namespace AmdOnlyRts.Networking.Classes
 {
-  public class HostController : IConnection
+  public class HostConnection : IConnection
   {
     private readonly GameServer _gameServer;
     private readonly GameClient _gameClient;
     public Guid ConnectionId { get; set; }
 
 
-    public HostController(int port)
+    public HostConnection(int port)
     {
 
       _gameServer = new GameServer(port);
