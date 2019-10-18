@@ -1,6 +1,4 @@
-using System;
 using System.Diagnostics;
-using System.Collections.Generic;
 
 namespace AMDOnlyRTS.Contracts.Data.Classes.GameEngine
 {
@@ -8,6 +6,7 @@ namespace AMDOnlyRTS.Contracts.Data.Classes.GameEngine
 
     public class GameClock {
         
+        public event OnTick OnTick;
         private long CurrentGameTime;
         private int TickLength = 10; //Tick Length in MS
 
@@ -39,11 +38,6 @@ namespace AMDOnlyRTS.Contracts.Data.Classes.GameEngine
                 OnTick(CurrentGameTime);
             }
         }
-
-        public void OnTick(long clock) {
-
-        }
-
     }
 
 }
