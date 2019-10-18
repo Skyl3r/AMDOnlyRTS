@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 
 namespace AMDOnlyRTS.Contracts.Data.Classes.GameEngine
@@ -6,9 +7,8 @@ namespace AMDOnlyRTS.Contracts.Data.Classes.GameEngine
 
     public class GameEngine {
         
-        public ulong GameClock { get; set; }
 
-        public Dictionary<ulong, Action> ActionQueue;
+        public Dictionary<long, Action> ActionQueue;
 
 
         public void Update() {
