@@ -14,12 +14,12 @@ namespace AmdOnlyRts.Networking.Server
       _port = port;
       _webHost = CreateWebHostBuilder(new string[] { }).Build();
     }
-    public Task Start()
+    public Task StartAsync()
     {
       return _webHost.StartAsync();
     }
 
-    public Task Stop()
+    public Task StopAsync()
     {
       return _webHost.StopAsync();
     }
