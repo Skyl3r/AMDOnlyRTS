@@ -37,9 +37,8 @@ This is an attempt at a highly moddable, cross platform and open source RTS game
 
 
 
-
+***
 
 
 ### Wanna get involved?
-**Contact us on IRC** 
-Freenode IRC: #AMDOnlyRTS
+Contact us at our Freenode IRC channel: **#AMDOnlyRTS**
