@@ -30,7 +30,7 @@ namespace AMDOnlyRTS.Contracts.Data.Classes.GameEngine
             long currentMsTime = stopwatch.ElapsedMilliseconds;
             
             //Convert time to gametime
-            long ActualGameTime = currentMsTime/10;
+            long ActualGameTime = currentMsTime / TickLength;
 
             //Check if time is on next tick
             if(ActualGameTime > CurrentGameTime) {
