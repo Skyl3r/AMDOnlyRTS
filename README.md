@@ -36,6 +36,10 @@ This is an attempt at a highly moddable, cross platform and open source RTS game
 1. Open the root folder in Visual Studio Code, or to build from commandline run: `dotnet build Core/AmdOnlyRts.Core.csproj`
 
 
-## Wanna get involved?
+
+
+
+
+### Wanna get involved?
 **Contact us on IRC** 
 Freenode IRC: #AMDOnlyRTS
