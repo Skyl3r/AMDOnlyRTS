@@ -1,35 +1,58 @@
 ﻿using System;
 using AmdOnlyRts.Renderer.Classes;
 using Love;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace AmdOnlyRts.Core
 {
-    class Program: Scene
+  public class Program : Scene
+  {
+    private LoveRenderer _loveRenderer;
+    private ILogger<Program> _log;
+
+    public Program(LoveRenderer loveRenderer, ILogger<Program> log)
+    {
+      _loveRenderer = loveRenderer;
+      _log = log;
+    }
+
+    //Entry point
+    static void Main(string[] args)
+    {
+      var serviceProvider = new ServiceCollection()
+        .Bootstrap()
+        .BuildServiceProvider();
+
+      serviceProvider.GetService<Program>().Start();
+    }
+
+    public void Start()
+    {
+      _log.LogDebug("Starting application");
+
+      _loveRenderer = new LoveRenderer();
+      _loveRenderer.OnLoad += new OnLoad(OnRendererLoad);
+      _loveRenderer.OnDraw += new OnDraw(OnRendererDraw);
+      _loveRenderer.OnUpdate += new OnUpdate(OnRendererUpdate);
+      _loveRenderer.Start();
+
+      _log.LogDebug("All done!");
+    }
+
+    public void OnRendererLoad()
     {
 
-        static LoveRenderer loveRenderer;
-        
-        //Example using Love Renderer
-        static void Main(string[] args)
-        {
-            loveRenderer = new LoveRenderer();
-            loveRenderer.OnLoad += new OnLoad(OnRendererLoad);
-            loveRenderer.OnDraw += new OnDraw(OnRendererDraw);
-            loveRenderer.OnUpdate += new OnUpdate(OnRendererUpdate);
-            loveRenderer.Start();
-
-        }
-
-        public static void OnRendererLoad() {
-
-        }
-
-        public static void OnRendererDraw() {
-            loveRenderer.graphics.DrawText("Hello, World", 300, 400);
-        }
-
-        public static void OnRendererUpdate() {
-
-        }
     }
+
+    public void OnRendererDraw()
+    {
+      _loveRenderer.graphics.DrawText("Hello, World", 300, 400);
+    }
+
+    public void OnRendererUpdate()
+    {
+
+    }
+  }
 }
