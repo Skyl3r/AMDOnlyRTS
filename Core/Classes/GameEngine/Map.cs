@@ -36,7 +36,7 @@ namespace AmdOnlyRts.Core.GameEngine
 					float sampleY = y / scale * frequency + octaveOffsets[octave].Y;
 
 
-					float noiseValue = Love.Mathf.Noise(sampleX, sampleY);
+					float noiseValue = Love.Mathf.Noise(sampleX, sampleY) * 2 - 1;
 					noiseHeight += noiseValue * amplitude;
 					
 					amplitude *= persistance;

@@ -49,14 +49,22 @@ namespace AmdOnlyRts.Core
 
     public void OnRendererLoad()
     {
-      int seed = 651651654;
+      int seed = 235234;
       float scale = 150;
-      int octaves = 100;
-      float initialAmplitude = 3;
+      //amplitude decreases each octave
+      //frequency increases each octave
+      int octaves = 10;
+      //
+      float initialAmplitude = 3f;
+      //higher frequency, farther apart sample points. So the values change more rapidly.
       float initialFrequency = 1.5f;
+      //rate at which amplitude decreases
       float persistance = 0.5f;
+      //rate at which frequency increases
       float lacunarity = 2f;
+
       data = Map.generateNoiseMap(xlimit, ylimit, seed, scale, octaves,initialAmplitude, initialFrequency, persistance, lacunarity);
+      
     }
 
     public void OnRendererDraw()
