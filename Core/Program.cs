@@ -12,16 +12,16 @@ namespace AmdOnlyRts.Core
 {
   public class Program : Scene
   {
-    private LoveRenderer _loveRenderer;
+    private IRenderer _renderer;
     private ILogger<Program> _log;
     float[,] data;
     
         int xlimit = 100;
         int ylimit = 100;
 
-    public Program(LoveRenderer loveRenderer, ILogger<Program> log)
+    public Program(IRenderer renderer, ILogger<Program> log)
     {
-      _loveRenderer = loveRenderer;
+      _renderer = renderer;
       _log = log;
     }
 
@@ -39,10 +39,10 @@ namespace AmdOnlyRts.Core
     {
       _log.LogDebug("Starting application");
 
-      _loveRenderer.OnLoad += new OnLoad(OnRendererLoad);
-      _loveRenderer.OnDraw += new OnDraw(OnRendererDraw);
-      _loveRenderer.OnUpdate += new OnUpdate(OnRendererUpdate);
-      _loveRenderer.Start();
+      _renderer.OnLoad += new OnLoad(OnRendererLoad);
+      _renderer.OnDraw += new OnDraw(OnRendererDraw);
+      _renderer.OnUpdate += new OnUpdate(OnRendererUpdate);
+      _renderer.Start();
 
       _log.LogDebug("All done!");
     }
@@ -87,7 +87,7 @@ namespace AmdOnlyRts.Core
           else if(data[x , y] < 1)
             Love.Graphics.SetColor(Color.DarkSlateGray);
           var tileSize = xlimit/10;
-          _loveRenderer.graphics.DrawRect(tileSize, tileSize, -tileSize + x * tileSize, -tileSize + y * tileSize);
+          _renderer.graphics.DrawRect(tileSize, tileSize, -tileSize + x * tileSize, -tileSize + y * tileSize);
         }
       
       }

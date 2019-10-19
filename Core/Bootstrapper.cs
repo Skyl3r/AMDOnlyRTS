@@ -1,4 +1,5 @@
 using AmdOnlyRts.Domain.Interfaces.Networking;
+using AmdOnlyRts.Domain.Interfaces.Renderer;
 using AmdOnlyRts.Networking;
 using AmdOnlyRts.Renderer.Classes.LoveRenderer;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,7 +11,7 @@ namespace AmdOnlyRts.Core
   {
     public static ServiceCollection Bootstrap(this ServiceCollection services)
     {
-      services.AddSingleton(new LoveRenderer());
+      services.AddSingleton<IRenderer, LoveRenderer>();
       services.AddTransient<Program>();
       services.AddTransient<INetworkService, SignalRNetworkService>();
       services.AddLogging(x =>

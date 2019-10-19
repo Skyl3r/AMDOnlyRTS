@@ -13,5 +13,6 @@ namespace AmdOnlyRts.Domain.Interfaces.Renderer
     event OnLoad OnLoad;
 
     IGraphics graphics { get; set; }
+    void Start();
   }
 }
