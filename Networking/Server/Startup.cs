@@ -9,6 +9,7 @@ namespace AmdOnlyRts.Networking.Server
   {
     public void ConfigureServices(IServiceCollection services)
     {
+      services.Bootstrap();
       services.AddSignalR();
     }
 

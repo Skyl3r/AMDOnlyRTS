@@ -9,7 +9,7 @@ namespace AmdOnlyRts.Core
 {
   public static class Bootstrapper
   {
-    public static ServiceCollection Bootstrap(this ServiceCollection services)
+    public static IServiceCollection Bootstrap(this IServiceCollection services)
     {
       services.AddSingleton<IRenderer, LoveRenderer>();
       services.AddTransient<Program>();

@@ -5,9 +5,9 @@ namespace AmdOnlyRts.Networking
 {  
   public static class Bootstrapper
   {
-    public static ServiceCollection Bootstrap(this ServiceCollection services)
+    public static IServiceCollection Bootstrap(this IServiceCollection services)
     {
-      services.AddSingleton<GameState>();
+      services.AddSingleton<GameStateContainer>();
 
       return services;
     }
