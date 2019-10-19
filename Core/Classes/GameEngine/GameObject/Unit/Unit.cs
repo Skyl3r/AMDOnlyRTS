@@ -1,7 +1,7 @@
 ﻿using AmdOnlyRts.Domain.Interfaces.GameObject.Unit;
 using System;
 
-namespace AMDOnlyRTS.Contracts.Data.Classes.GameEngine.GameObject.Unit
+namespace AmdOnlyRts.Core.Classes.GameEngine.GameObject.Unit
 {
 	public class Unit : IUnit
 	{

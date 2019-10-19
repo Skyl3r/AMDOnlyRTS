@@ -1,14 +1,15 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
-using AMDOnlyRTS.Contracts.Data.Classes.GameEngine.GameObject.Structure;
-using AMDOnlyRTS.Contracts.Data.Classes.GameEngine.GameObject.Structure.ResourceCollector;
-using AMDOnlyRTS.Contracts.Data.Classes.GameEngine.GameObject.Structure.UnitFactory;
-using AMDOnlyRTS.Contracts.Data.Classes.GameEngine.GameObject.Unit;
-using AMDOnlyRTS.Core.LuaHelp;
+using System.IO;
+using AmdOnlyRts.Core.Classes.GameEngine.GameObject.Structure;
+using AmdOnlyRts.Core.Classes.GameEngine.GameObject.Structure.ResourceCollector;
+using AmdOnlyRts.Core.Classes.GameEngine.GameObject.Structure.UnitFactory;
+using AmdOnlyRts.Core.Classes.GameEngine.GameObject.Unit;
+using AmdOnlyRts.Core.LuaHelp;
 using AmdOnlyRts.Domain.Interfaces.GameEngine.Mod;
 
-namespace AMDOnlyRTS.Contracts.Data.Classes.GameEngine.Mod
+
+namespace AmdOnlyRts.Core.Classes.GameEngine.Mod
 {
 	public class Mod : IMod
 	{

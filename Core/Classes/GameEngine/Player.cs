@@ -1,6 +1,6 @@
 ﻿using AmdOnlyRts.Domain.Interfaces.Game;
 
-namespace AMDOnlyRTS.Core.GameEngine
+namespace AmdOnlyRts.Core.GameEngine
 {
 	public class Player : IPlayer
 	{

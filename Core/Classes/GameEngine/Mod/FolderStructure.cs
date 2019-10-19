@@ -1,7 +1,7 @@
 ﻿using AmdOnlyRts.Domain.Interfaces.GameEngine.Mod;
 using System.Collections.Generic;
 
-namespace AMDOnlyRTS.Contracts.Data.Classes.GameEngine.Mod
+namespace AmdOnlyRts.Core.Classes.GameEngine.Mod
 {
 	public class FolderStructure : IFolderStructure
 	{

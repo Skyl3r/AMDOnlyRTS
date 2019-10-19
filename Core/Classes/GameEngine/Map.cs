@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using AmdOnlyRts.Domain.Interfaces.Game;
 
-namespace AmdOnlyRTS.Core.GameEngine
+namespace AmdOnlyRts.Core.GameEngine
 {
 	//We should consider moving this to domain
 	public class Map : IMap

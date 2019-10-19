@@ -1,5 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# 
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmdOnlyRts.Core", "Core\AmdOnlyRts.Core.csproj", "{40C2A6C1-231A-4652-87CB-5C69A761A3EF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmdOnlyRts.Domain", "Domain\AmdOnlyRts.Domain.csproj", "{000531AD-5987-4168-9567-CEAD842E1B04}"
@@ -7,6 +8,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmdOnlyRts.Networking", "Networking\AmdOnlyRts.Networking.csproj", "{A00B0D18-7D2C-4DB1-A424-47052856A6A7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmdOnlyRts.Render", "Render\AmdOnlyRts.Render.csproj", "{A9FEFF6C-1C43-41A2-819B-BAD2B4E6BB90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmdOnlyRts.Scenes", "Scenes\AmdOnlyRts.Scenes.csproj", "{F0D3079D-8116-4435-BDCE-BBFD36A5A211}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,5 +33,9 @@ Global
 		{A9FEFF6C-1C43-41A2-819B-BAD2B4E6BB90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9FEFF6C-1C43-41A2-819B-BAD2B4E6BB90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9FEFF6C-1C43-41A2-819B-BAD2B4E6BB90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0D3079D-8116-4435-BDCE-BBFD36A5A211}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0D3079D-8116-4435-BDCE-BBFD36A5A211}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0D3079D-8116-4435-BDCE-BBFD36A5A211}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0D3079D-8116-4435-BDCE-BBFD36A5A211}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

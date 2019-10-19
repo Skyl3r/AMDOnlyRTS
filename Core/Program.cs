@@ -1,7 +1,9 @@
-﻿using System;
+﻿
+using System;
 using System.Threading.Tasks;
-using AmdOnlyRts.Renderer.Classes;
-using AmdOnlyRTS.Core.GameEngine;
+using AmdOnlyRts.Renderer.Classes.LoveRenderer;
+using AmdOnlyRts.Core.GameEngine;
+using AmdOnlyRts.Domain.Interfaces.Renderer;
 using Love;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;

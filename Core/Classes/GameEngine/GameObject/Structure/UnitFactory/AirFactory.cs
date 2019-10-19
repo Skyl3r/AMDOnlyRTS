@@ -1,9 +1,9 @@
 ﻿using System;
 using AmdOnlyRts.Domain.Interfaces.GameObject.Structure.Factory;
 
-namespace AMDOnlyRTS.Contracts.Data.Classes.GameEngine.GameObject.Structure.UnitFactory
+namespace AmdOnlyRts.Core.Classes.GameEngine.GameObject.Structure.UnitFactory
 {
-  public class AirFactory : IAirFactory
+ 	public class AirFactory : IAirFactory
 	{
 		public string Description
 		{

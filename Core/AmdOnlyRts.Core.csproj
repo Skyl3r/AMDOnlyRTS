@@ -13,9 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Render\AmdOnlyRts.Render.csproj" />
     <ProjectReference Include="..\Domain\AmdOnlyRts.Domain.csproj" />
     <ProjectReference Include="..\Networking\AmdOnlyRts.Networking.csproj" />
-    <ProjectReference Include="..\Render\AmdOnlyRts.Render.csproj" />
   </ItemGroup>
 
 </Project>

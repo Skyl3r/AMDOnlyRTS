@@ -1,7 +1,7 @@
 ﻿using System;
 using AmdOnlyRts.Domain.Interfaces.GameObject.Structure;
 
-namespace AMDOnlyRTS.Contracts.Data.Classes.GameEngine.GameObject.Structure
+namespace AmdOnlyRts.Core.Classes.GameEngine.GameObject.Structure
 {
 	public class Garrison : IGarrison
 	{
