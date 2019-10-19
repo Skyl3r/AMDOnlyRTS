@@ -16,8 +16,8 @@ namespace AmdOnlyRts.Core
     private ILogger<Program> _log;
     float[,] data;
     
-        int xlimit = 100;
-        int ylimit = 100;
+        int xlimit = 500;
+        int ylimit = 500;
 
     public Program(IRenderer renderer, ILogger<Program> log)
     {
@@ -49,13 +49,13 @@ namespace AmdOnlyRts.Core
 
     public void OnRendererLoad()
     {
-      int seed = 100;
-      float scale = 100;
-      int octaves = 1;
-      float initialAmplitude = 5;
-      float initialFrequency = 5;
-      float persistance = 0.2f;
-      float lacunarity = 1.5f;
+      int seed = 651651654;
+      float scale = 150;
+      int octaves = 100;
+      float initialAmplitude = 3;
+      float initialFrequency = 1.5f;
+      float persistance = 0.5f;
+      float lacunarity = 2f;
       data = Map.generateNoiseMap(xlimit, ylimit, seed, scale, octaves,initialAmplitude, initialFrequency, persistance, lacunarity);
     }
 
@@ -68,25 +68,25 @@ namespace AmdOnlyRts.Core
         for(int y = 1; y < ylimit; y += 1)
         {
           //Console.WriteLine(data[x * y]);
-          if(data[x , y] < 0.3)
-            Love.Graphics.SetColor(0, 0, data[x,y] * 3.3f);
-          else if(data[x , y] < 0.4)
+          if(data[x , y] < 0.2)
+            Love.Graphics.SetColor(0, 0, data[x,y] * 6.6f);
+          else if(data[x , y] < 0.25)
             Love.Graphics.SetColor(Color.Yellow);
-          // else if(data[x , y] < 0.5)
-          //   Love.Graphics.SetColor(Color.LightGreen);
-          else if(data[x , y] < 1)
-            Love.Graphics.SetColor(0, 1.25f - data[x,y], 0);
-          else if(data[x , y] < 6)
-            Love.Graphics.SetColor(Color.DarkGreen);
+          else if(data[x , y] < 0.28)
+            Love.Graphics.SetColor(Color.LightGreen);
+          // else if(data[x , y] < 1)
+          //   Love.Graphics.SetColor(0, 1.25f - data[x,y], 0);
           else if(data[x , y] < 0.7)
-            Love.Graphics.SetColor(Color.DarkSlateGray);
+            Love.Graphics.SetColor(Color.Green);
           else if(data[x , y] < 0.8)
-            Love.Graphics.SetColor(Color.DarkSlateGray);
+            Love.Graphics.SetColor(Color.DarkGreen);
+          else if(data[x , y] < 0.85)
+            Love.Graphics.SetColor(Color.BurlyWood);
           else if(data[x , y] < 0.9)
-            Love.Graphics.SetColor(Color.DarkSlateGray);
+            Love.Graphics.SetColor(Color.DarkGray);
           else if(data[x , y] < 1)
             Love.Graphics.SetColor(Color.DarkSlateGray);
-          var tileSize = xlimit/10;
+          float tileSize = (100.0f/xlimit * 10);
           _renderer.graphics.DrawRect(tileSize, tileSize, -tileSize + x * tileSize, -tileSize + y * tileSize);
         }
       
