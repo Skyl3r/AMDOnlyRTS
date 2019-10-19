@@ -1,15 +1,16 @@
+using AmdOnlyRts.Domain.Interfaces.Renderer;
 using Love;
 
-namespace AmdOnlyRts.Renderer.Classes
+namespace AmdOnlyRts.Renderer.Classes.LoveRenderer
 {
-  public class LoveGraphics : Graphics {
+  public class LoveGraphics : IGraphics {
 
 
         public LoveGraphics() {
 
         }
 
-        public override void DrawText(string text, int x, int y) {
+        public void DrawText(string text, int x, int y) {
             Love.Graphics.Print(text, x, y);
         }
 

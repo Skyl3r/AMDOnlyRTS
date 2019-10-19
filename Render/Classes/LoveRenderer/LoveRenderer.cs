@@ -1,6 +1,7 @@
+using AmdOnlyRts.Domain.Interfaces.Renderer;
 using Love;
 
-namespace AmdOnlyRts.Renderer.Classes
+namespace AmdOnlyRts.Renderer.Classes.LoveRenderer
 {
   public class LoveRenderer : Scene, IRenderer  {
 
@@ -8,8 +9,7 @@ namespace AmdOnlyRts.Renderer.Classes
         public event OnUpdate OnUpdate;
         public event OnLoad OnLoad;
 
-        public Graphics graphics { get; set; }
-
+        public IGraphics graphics { get; set; }
 
         public LoveRenderer() {
             graphics = new LoveGraphics();

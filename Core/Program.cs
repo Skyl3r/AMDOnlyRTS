@@ -1,5 +1,5 @@
-﻿using System;
-using AmdOnlyRts.Renderer.Classes;
+﻿using AmdOnlyRts.Domain.Interfaces.Renderer;
+using AmdOnlyRts.Renderer.Classes.LoveRenderer;
 using Love;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;

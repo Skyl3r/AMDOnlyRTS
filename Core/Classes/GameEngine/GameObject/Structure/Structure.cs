@@ -1,7 +1,7 @@
 ﻿using AmdOnlyRts.Domain.Interfaces.GameObject.Structure;
 using System;
 
-namespace AMDOnlyRTS.Contracts.Data.Classes.GameEngine.GameObject.Structure
+namespace AmdOnlyRts.Core.Classes.GameEngine.GameObject.Structure
 {
 	public class Structure : IStructure
 	{

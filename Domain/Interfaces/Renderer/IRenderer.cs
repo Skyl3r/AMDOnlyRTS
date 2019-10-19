@@ -1,6 +1,6 @@
 
 
-namespace AmdOnlyRts.Renderer.Classes
+namespace AmdOnlyRts.Domain.Interfaces.Renderer
 {
   public delegate void OnDraw();
   public delegate void OnUpdate();
@@ -12,8 +12,6 @@ namespace AmdOnlyRts.Renderer.Classes
     event OnUpdate OnUpdate;
     event OnLoad OnLoad;
 
-    //Create renderer necessities
-    Graphics graphics { get; set; }
-
+    IGraphics graphics { get; set; }
   }
 }

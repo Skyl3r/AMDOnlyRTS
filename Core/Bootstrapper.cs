@@ -1,6 +1,6 @@
 using AmdOnlyRts.Domain.Interfaces.Networking;
 using AmdOnlyRts.Networking;
-using AmdOnlyRts.Renderer.Classes;
+using AmdOnlyRts.Renderer.Classes.LoveRenderer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 

@@ -1,6 +1,6 @@
 using AmdOnlyRts.Domain.Interfaces.Networking;
 
-namespace AMDOnlyRTS.Core.GameEngine
+namespace AmdOnlyRts.Core.GameEngine
 {
 	public class SelectionBox : ISelectionBox
 	{

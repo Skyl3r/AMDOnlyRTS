@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace AMDOnlyRTS.Core.GameEngine
+namespace AmdOnlyRts.Core.GameEngine
 {
 
     public class GameEngine {

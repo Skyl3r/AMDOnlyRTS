@@ -1,7 +1,7 @@
 ﻿using System;
-using AmdOnlyRts.Domain.GameObject.Structure.Factory;
+using AmdOnlyRts.Domain.Interfaces.GameObject.Structure.Factory;
 
-namespace AMDOnlyRTS.Contracts.Data.Classes.GameEngine.GameObject.Structure.UnitFactory
+namespace AmdOnlyRts.Core.Classes.GameEngine.GameObject.Structure.UnitFactory
 {
 	public class LandFactory : ILandFactory
 	{

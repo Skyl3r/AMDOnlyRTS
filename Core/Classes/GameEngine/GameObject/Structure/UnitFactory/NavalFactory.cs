@@ -1,7 +1,7 @@
 ﻿using AmdOnlyRts.Domain.Interfaces.GameObject.Structure.Factory;
 using System;
 
-namespace AMDOnlyRTS.Contracts.Data.Classes.GameEngine.GameObject.Structure.UnitFactory
+namespace AmdOnlyRts.Core.Classes.GameEngine.GameObject.Structure.UnitFactory
 {
 	public class NavalFactory : INavalFactory
 	{

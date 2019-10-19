@@ -1,6 +1,6 @@
-﻿using AMDOnlyRTS.Contracts.Data.Classes.GameEngine.GameObject.Unit;
-using AMDOnlyRTS.Contracts.Data.Classes.GameEngine.Mod;
-using AMDOnlyRTS.Core.LuaHelp;
+﻿using AmdOnlyRts.Core.Classes.GameEngine.GameObject.Unit;
+using AmdOnlyRts.Core.Classes.GameEngine.Mod;
+using AmdOnlyRts.Core.LuaHelp;
 using AmdOnlyRts.Networking;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AMDOnlyRTS.Core
+namespace AmdOnlyRts.Core
 {
 	class Example
 	{

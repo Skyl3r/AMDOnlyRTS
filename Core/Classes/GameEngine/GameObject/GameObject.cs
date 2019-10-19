@@ -1,7 +1,7 @@
 ﻿using AmdOnlyRts.Domain.Interfaces.GameObject;
 using System;
 
-namespace AMDOnlyRTS.Contracts.Data.Classes.GameEngine.GameObject
+namespace AmdOnlyRts.Core.Classes.GameEngine.GameObject
 {
 	public class GameObject : IGameObject
 	{
