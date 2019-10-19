@@ -17,9 +17,10 @@ namespace AmdOnlyRts.Networking
           var server = new GameServer(25565);
           await server.StartAsync();
 
-          var client = new GameClient("192.168.0.2", 8000);
+          var client = new GameClient("localhost", 25565);
           client.RegisterCallback((x,y)=> Console.WriteLine($"{x}: {y}"));
           await client.StartAsync();
+            await client.Send("Me James", "YEET");
           while(true)
           {
             await client.Send("Me James", Console.ReadLine());

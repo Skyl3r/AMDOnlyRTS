@@ -10,7 +10,7 @@ namespace AmdOnlyRts.Networking.Classes
   {
     private readonly GameServer _gameServer;
     private readonly GameClient _gameClient;
-    public Guid ConnectionId { get; set; }
+    public Guid ConnectionId { get; private set; }
 
 
     public HostConnection(int port)
@@ -18,15 +18,7 @@ namespace AmdOnlyRts.Networking.Classes
 
       _gameServer = new GameServer(port);
       _gameClient = new GameClient("localhost", port);
-
-    }
-
-    public async Task ConnectAsync()
-    {
-      await _gameServer.StopAsync();
-      //We may need a thread sleep here
-      _gameClient.RegisterCallback(QueueAction);
-      await _gameClient.StartAsync();
+      ConnectionId = Guid.NewGuid();
     }
 
     public async Task DisconnectAsync()
@@ -64,6 +56,21 @@ namespace AmdOnlyRts.Networking.Classes
     {
       _gameClient.Dispose();
       _gameServer.Dispose();
+    }
+
+    
+
+    public async Task ConnectLocalAsync()
+    {
+      await _gameServer.StopAsync();
+      //We may need a thread sleep here
+      _gameClient.RegisterCallback(QueueAction);
+      await _gameClient.StartAsync();
+    }
+
+    public Task ConnectDedicatedAsync()
+    {
+      throw new InvalidOperationException();
     }
   }
 }

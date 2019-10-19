@@ -8,12 +8,13 @@ namespace AmdOnlyRts.Networking.Classes
   public class ClientConnection : IConnection
   {
     private readonly GameClient _gameClient;
-    public Guid ConnectionId { get; set; }
+    public Guid ConnectionId { get; private set; }
 
 
     public ClientConnection(string address, int port)
     {
       _gameClient = new GameClient(address, port);
+      ConnectionId = Guid.NewGuid();
     }
     
     public Task ConnectAsync()
@@ -55,6 +56,17 @@ namespace AmdOnlyRts.Networking.Classes
     public void Dispose()
     {
       _gameClient.Dispose();
+    }
+
+    public Task ConnectLocalAsync()
+    {
+      _gameClient.RegisterCallback(QueueAction);
+      return _gameClient.StartAsync();
+    }
+
+    public Task ConnectDedicatedAsync()
+    {
+      throw new NotImplementedException();
     }
   }
 }

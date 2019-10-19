@@ -5,9 +5,10 @@ namespace AmdOnlyRts.Domain.Interfaces.Networking
 {
   public interface IConnection : IDisposable
   {
-		Task ConnectAsync();
+		Task ConnectLocalAsync();
+		Task ConnectDedicatedAsync();
 		Task DisconnectAsync();
-    Guid ConnectionId { get; set; }
+    Guid ConnectionId { get; }
     Task<long> PingAsync();
     Task SendActionAsync(long gameTime, IAction action);
     Task<(long gameTime, IAction action)> GetNextAction();
