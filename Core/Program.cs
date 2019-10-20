@@ -3,6 +3,7 @@ using System;
 using System.Threading.Tasks;
 using AmdOnlyRts.Renderer.Classes.LoveRenderer;
 using AmdOnlyRts.Core.GameEngine;
+using AmdOnlyRts.Core.GameEngine.Map;
 using AmdOnlyRts.Domain.Interfaces.Renderer;
 using Love;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,7 +15,7 @@ namespace AmdOnlyRts.Core
   {
     private IRenderer _renderer;
     private ILogger<Program> _log;
-    private Map map;
+    private MapGenerator map;
     
 
     public Program(IRenderer renderer, ILogger<Program> log)
@@ -48,13 +49,13 @@ namespace AmdOnlyRts.Core
 
     public void OnRendererLoad()
     {
-      map = new Map();
-      map.initMapGeneration(500, 500);
+      map = new MapGenerator();
+      map.initMapGeneration(150, 150);
     }
 
     public void OnRendererDraw()
     {
-      map.Draw(_renderer);
+      map.TileMap.Draw(_renderer);
     }
 
     public void OnRendererUpdate()

@@ -4,8 +4,7 @@
 	{
 		void Draw(){}
 		
-		float[,] TileMap{get;}
-		float[,] ChunkMap{get;}
+		float[,] Map{get;set;}
 		int Width{get;}
 		int Height{get;}
 	}

@@ -1,13 +1,14 @@
-using AmdOnlyRts.MathUtilities;
+//using AmdOnlyRts.MathUtilities;
 
 namespace AmdOnlyRts.Domain.Interfaces.Game
 {
     public interface ITile
 	{
 		void Draw(){}
-        Vector2D Position{get;}
+        //Vector2D Position{get;}
 		int X{get;}
 		int Y{get;}
+		int TypeId{get;}
 		
 	}
 }

@@ -31,7 +31,7 @@ namespace AmdOnlyRts.MathUtilities
 
             return result;
         }
-            public static float Dot(Vector2D vector1, Vector2D vector2){
+        public static float Dot(Vector2D vector1, Vector2D vector2){
             float result = 0;
             double theta = Vector2D.Angle(vector1, vector2);
             result = vector1.Length() * vector2.Length() * (float)Math.Cos( theta );
