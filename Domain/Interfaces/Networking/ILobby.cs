@@ -5,6 +5,6 @@ namespace AmdOnlyRts.Domain.Interfaces.Networking
 {
 	public interface ILobby
 	{
-		List<IPlayer> Players { get; set; }
+		Dictionary<string, IPlayer> Players { get; set; }
 	}
 }

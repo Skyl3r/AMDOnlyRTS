@@ -1,32 +1,38 @@
 using System;
 using System.Threading.Tasks;
+using AmdOnlyRts.Domain.Classes.Networking;
 using AmdOnlyRts.Domain.Interfaces.Networking;
 using AmdOnlyRts.Domain.Models;
 using Microsoft.AspNetCore.SignalR;
 
 namespace AmdOnlyRts.Networking.Server.Hubs
 {
-    public class GameHub : Hub
+  public class GameHub : Hub
+  {
+    private readonly GameStateContainer _gameStateContainer;
+    public GameHub(GameStateContainer gameStateContainer)
     {
-        public async Task Send(string name, string message)
-        {
-            await Clients.All.SendAsync("Send", name, message);
-        }
-
-
-        public async Task Action(Guid clientId, string message)
-        {
-            await Clients.All.SendAsync("Send", clientId, message);
-        }
-
-        public async Task Handshake(INetPlayer player)
-        {
-            await Clients.All.SendAsync("Rollcall");
-        }
-
-        public async Task CreateLobby(CreateLobbyRequest lobbyRequest)
-        {
-            await Groups.AddToGroupAsync(Context.ConnectionId, lobbyRequest.Name);
-        }
+      _gameStateContainer = gameStateContainer;
     }
+
+    public async Task Chat(string name, string message)
+    {
+      await Clients.All.SendAsync("Chat", name, message);
+    }
+
+    public async Task JoinLobby(Guid lobbyId, INetPlayer player)
+    {
+      await Clients.All.SendAsync("PlayerJoin");
+    }
+
+    public override Task OnDisconnectedAsync(Exception e)
+    {
+      var gameId = _gameStateContainer.PlayerLeave(Context.ConnectionId);
+      if(gameId !=null)
+      {
+          Clients.Group(gameId).SendAsync("PlayerLeave");
+      }
+      return base.OnDisconnectedAsync(e);
+    }
+  }
 }

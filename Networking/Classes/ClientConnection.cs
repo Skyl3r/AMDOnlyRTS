@@ -1,15 +1,23 @@
 using System;
+using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 using AmdOnlyRts.Domain.Interfaces.Networking;
 using AmdOnlyRts.Networking.Client;
+using Newtonsoft.Json;
 
 namespace AmdOnlyRts.Networking.Classes
 {
   public class ClientConnection : IConnection
   {
+    private readonly string _address;
     private readonly GameClient _gameClient;
+    private Guid gameId;
+
+    
     public Guid ConnectionId { get; private set; }
 
+    public ILobby CurrentLobby { get; private set; }
 
     public ClientConnection(string address, int port)
     {
@@ -34,17 +42,7 @@ namespace AmdOnlyRts.Networking.Classes
       throw new System.NotImplementedException();
     }
 
-    public Task<long> PingAsync()
-    {
-      throw new System.NotImplementedException();
-    }
-
     public Task SendActionAsync(long gameTime, IAction action)
-    {
-      throw new NotImplementedException();
-    }
-
-    public Task SyncronizeAsync(long gameTime)
     {
       throw new NotImplementedException();
     }
@@ -61,12 +59,42 @@ namespace AmdOnlyRts.Networking.Classes
     public Task ConnectLocalAsync()
     {
       _gameClient.RegisterCallback(QueueAction);
+      _gameClient.RegisterLobbyUpdateCallback(UpdateLobby);
       return _gameClient.StartAsync();
     }
 
     public Task ConnectDedicatedAsync()
     {
       throw new NotImplementedException();
+    }
+
+    private void UpdateLobby()
+    {
+      using(var httpClient = new HttpClient())
+      {
+        var response = httpClient.GetAsync($"http://{_address}/api/lobby/{gameId}").GetAwaiter().GetResult();
+
+        if(response.IsSuccessStatusCode)
+        {
+          var responseString = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+          CurrentLobby = JsonConvert.DeserializeObject<ILobby>(responseString);
+        }
+        throw new Exception("There was a problem when making the request");
+      }
+    }
+    public async Task<IEnumerable<ILobby>> GetLobbyListing()
+    {
+      using(var httpClient = new HttpClient())
+      {
+        var response = await httpClient.GetAsync($"http://{_address}/api/lobby");
+
+        if(response.IsSuccessStatusCode)
+        {
+          var responseString = await response.Content.ReadAsStringAsync();
+          return JsonConvert.DeserializeObject<IEnumerable<ILobby>>(responseString);
+        }
+        throw new Exception("There was a problem when making the request");
+      }
     }
   }
 }

@@ -39,6 +39,12 @@ namespace AmdOnlyRts.Networking.Client
       _connection.On<string, string>("Send", callBack);
     }
 
+    public void RegisterLobbyUpdateCallback(Action callBack)
+    {
+      _connection.On("PlayerJoin", callBack);
+      _connection.On("PlayerLeave", callBack);
+    }
+
     public void Dispose()
     {
       _connection.StopAsync().Wait();

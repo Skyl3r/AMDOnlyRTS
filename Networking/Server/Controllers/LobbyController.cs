@@ -1,5 +1,6 @@
 using AmdOnlyRts.Domain.Classes.Networking;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq;
 
 namespace AmdOnlyRts.Networking.Server.Controllers
@@ -10,14 +11,19 @@ namespace AmdOnlyRts.Networking.Server.Controllers
     private readonly GameStateContainer _gameStateContainer;
     public LobbyController(GameStateContainer gameStateContainer)
     {
-        _gameStateContainer = gameStateContainer;
+      _gameStateContainer = gameStateContainer;
     }
 
-    [HttpGet("GetLobbyListing")]
-    public IActionResult GetLobbyListing()
+    [HttpGet()]
+    public IActionResult GetLobby(Guid? gameId = null)
     {
-      return Ok(_gameStateContainer.GameStates
-        .Select(gs => gs.Value.Lobby));
+      if (!gameId.HasValue)
+      {
+        return Ok(_gameStateContainer.GameStates
+          .Select(gs => gs.Value.Lobby));
+      }
+
+      return Ok(_gameStateContainer.GameStates[gameId.Value].Lobby);
     }
   }
 }

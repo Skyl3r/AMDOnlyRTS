@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace AmdOnlyRts.Domain.Interfaces.Networking
@@ -8,10 +9,10 @@ namespace AmdOnlyRts.Domain.Interfaces.Networking
 		Task ConnectLocalAsync();
 		Task ConnectDedicatedAsync();
 		Task DisconnectAsync();
+    Task<IEnumerable<ILobby>> GetLobbyListing();
     Guid ConnectionId { get; }
-    Task<long> PingAsync();
+    ILobby CurrentLobby { get; }
     Task SendActionAsync(long gameTime, IAction action);
     Task<(long gameTime, IAction action)> GetNextAction();
-    Task SyncronizeAsync(long gameTime);
   }
 }

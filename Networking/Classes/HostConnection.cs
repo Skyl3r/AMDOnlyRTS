@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AmdOnlyRts.Domain.Interfaces.Networking;
 using AmdOnlyRts.Networking.Client;
@@ -33,17 +34,7 @@ namespace AmdOnlyRts.Networking.Classes
       throw new System.NotImplementedException();
     }
 
-    public Task<long> PingAsync()
-    {
-      throw new System.NotImplementedException();
-    }
-
     public Task SendActionAsync(long gameTime, IAction action)
-    {
-      throw new NotImplementedException();
-    }
-
-    public Task SyncronizeAsync(long gameTime)
     {
       throw new NotImplementedException();
     }
@@ -71,6 +62,11 @@ namespace AmdOnlyRts.Networking.Classes
     public Task ConnectDedicatedAsync()
     {
       throw new InvalidOperationException();
+    }
+
+    public Task<IEnumerable<ILobby>> GetLobbyListing()
+    {
+      throw new NotImplementedException();
     }
   }
 }
