@@ -4,7 +4,7 @@ namespace AmdOnlyRts.Domain.Interfaces.Game
 {
     public interface ITile
 	{
-		void Draw(){}
+		void Draw();
         //Vector2D Position{get;}
 		int X{get;}
 		int Y{get;}

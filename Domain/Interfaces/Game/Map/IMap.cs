@@ -2,7 +2,7 @@
 {
 	public interface IMap
 	{
-		void Draw(){}
+		void Draw();
 		
 		float[,] Map{get;set;}
 		int Width{get;}

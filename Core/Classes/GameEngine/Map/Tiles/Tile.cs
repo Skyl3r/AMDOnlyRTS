@@ -22,7 +22,8 @@ namespace AmdOnlyRts.Core.GameEngine.Map
         public int X => x;
         public int Y => y;
 
-        public int TypeId => TypeId;
+        //ninja'd
+        public int TypeId => typeId;
         public float NoiseValue {get => noiseValue; set => noiseValue = value;}
 
         public Tile(int x, int y, float width, float noiseValue){
@@ -65,5 +66,14 @@ namespace AmdOnlyRts.Core.GameEngine.Map
             
             renderer.graphics.DrawRect(width, width, -width + x * width, -width + y * width);
         }
+
+    /*dotnetcore3.0 supports virtual extension methods, I suggest we stay away from them (See multiple inheritance). 
+      When this was added to ITile the syntax used was 'void Draw(){}' this will create a default implementation of the method on the interface itself.
+      Since it was default it went unnoticed that Tile didnt have a Draw() implementation. It the future lets use 'void Draw();' :D
+    */
+    public void Draw()
+    {
+      throw new NotImplementedException();
     }
+  }
 }
