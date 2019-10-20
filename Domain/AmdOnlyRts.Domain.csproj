@@ -4,5 +4,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
-  
+  <ItemGroup>
+    <ProjectReference Include="..\MathUtilities\AmdOnlyRts.MathUtilities.csproj" />
+  </ItemGroup>
 </Project>

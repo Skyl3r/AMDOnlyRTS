@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using AmdOnlyRts.Domain.Interfaces.Game;
 using AmdOnlyRts.Domain.Interfaces.Renderer;
 using Love;
+using AmdOnlyRts.MathUtilities;
+
 
 namespace AmdOnlyRts.Core.GameEngine
 {
