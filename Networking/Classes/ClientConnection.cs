@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using AmdOnlyRts.Domain.Interfaces.Game;
 using AmdOnlyRts.Domain.Interfaces.Networking;
 using AmdOnlyRts.Networking.Client;
 using Newtonsoft.Json;
@@ -12,25 +13,15 @@ namespace AmdOnlyRts.Networking.Classes
   {
     private readonly string _address;
     private readonly GameClient _gameClient;
-    private Guid gameId;
-
-    
-    public Guid ConnectionId { get; private set; }
 
     public ILobby CurrentLobby { get; private set; }
 
     public ClientConnection(string address, int port)
     {
+      _address = address;
       _gameClient = new GameClient(address, port);
-      ConnectionId = Guid.NewGuid();
     }
     
-    public Task ConnectAsync()
-    {
-      _gameClient.RegisterCallback(QueueAction);
-      return _gameClient.StartAsync();
-    }
-
     public Task DisconnectAsync()
     {
       return _gameClient.StopAsync();
@@ -56,19 +47,20 @@ namespace AmdOnlyRts.Networking.Classes
       _gameClient.Dispose();
     }
 
-    public Task ConnectLocalAsync()
+    public async Task ConnectAsync(Guid gameId, IPlayer player)
     {
       _gameClient.RegisterCallback(QueueAction);
       _gameClient.RegisterLobbyUpdateCallback(UpdateLobby);
-      return _gameClient.StartAsync();
+      await _gameClient.StartAsync();
+      await _gameClient.JoinLobby(gameId, player);
     }
 
-    public Task ConnectDedicatedAsync()
+    public Task CreateLobby(string name, IPlayer player)
     {
-      throw new NotImplementedException();
+      return _gameClient.CreateLobby(name, player);
     }
 
-    private void UpdateLobby()
+    private void UpdateLobby(Guid gameId)
     {
       using(var httpClient = new HttpClient())
       {
@@ -82,6 +74,7 @@ namespace AmdOnlyRts.Networking.Classes
         throw new Exception("There was a problem when making the request");
       }
     }
+
     public async Task<IEnumerable<ILobby>> GetLobbyListing()
     {
       using(var httpClient = new HttpClient())

@@ -20,10 +20,10 @@ namespace AmdOnlyRts.Networking
           var client = new GameClient("localhost", 25565);
           client.RegisterCallback((x,y)=> Console.WriteLine($"{x}: {y}"));
           await client.StartAsync();
-            await client.Send("Me James", "YEET");
+            //await client.Send("Me James", "YEET");
           while(true)
           {
-            await client.Send("Me James", Console.ReadLine());
+            //await client.Send("Me James", Console.ReadLine());
           }
 
 

@@ -1,8 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AmdOnlyRts.Domain.Classes.Networking;
-using AmdOnlyRts.Domain.Interfaces.Networking;
-using AmdOnlyRts.Domain.Models;
+using AmdOnlyRts.Domain.Interfaces.Game;
 using Microsoft.AspNetCore.SignalR;
 
 namespace AmdOnlyRts.Networking.Server.Hubs
@@ -20,17 +20,41 @@ namespace AmdOnlyRts.Networking.Server.Hubs
       await Clients.All.SendAsync("Chat", name, message);
     }
 
-    public async Task JoinLobby(Guid lobbyId, INetPlayer player)
+    public async Task JoinLobby(Guid gameId, IPlayer player)
     {
-      await Clients.All.SendAsync("PlayerJoin");
+      _gameStateContainer.GameStates[gameId].Lobby.Players.Add(Context.ConnectionId, player);
+      await Clients.Group(gameId.ToString()).SendAsync("PlayerJoin", gameId);
+    }
+
+    public async Task CreateLobby(string name, IPlayer player)
+    {
+      var gameId = Guid.NewGuid();
+      _gameStateContainer.GameStates.Add(gameId, 
+        new GameState
+        {
+          GameId = gameId,
+          GamePhase= Domain.Enums.GamePhase.Lobby,
+          Lobby = new GameLobby
+          {
+            DisplayName = name,
+            GameId = gameId,
+            Players = new Dictionary<string, IPlayer>
+            {
+              { Context.ConnectionId, player}
+            }
+          }
+
+        });
+
+        await Groups.AddToGroupAsync(Context.ConnectionId, gameId.ToString());
     }
 
     public override Task OnDisconnectedAsync(Exception e)
     {
       var gameId = _gameStateContainer.PlayerLeave(Context.ConnectionId);
-      if(gameId !=null)
+      if (gameId != null)
       {
-          Clients.Group(gameId).SendAsync("PlayerLeave");
+        Clients.Group(gameId).SendAsync("PlayerLeave");
       }
       return base.OnDisconnectedAsync(e);
     }

@@ -4,69 +4,59 @@ using System.Threading.Tasks;
 using AmdOnlyRts.Domain.Interfaces.Networking;
 using AmdOnlyRts.Networking.Client;
 using AmdOnlyRts.Networking.Server;
+using System.Linq;
+using System.Threading;
+using AmdOnlyRts.Domain.Interfaces.Game;
 
 namespace AmdOnlyRts.Networking.Classes
 {
-  public class HostConnection : IConnection
+  public class HostConnection : ClientConnection, IConnection
   {
     private readonly GameServer _gameServer;
-    private readonly GameClient _gameClient;
-    public Guid ConnectionId { get; private set; }
 
-
-    public HostConnection(int port)
+    public HostConnection(int port) : base("localhost", port)
     {
 
       _gameServer = new GameServer(port);
-      _gameClient = new GameClient("localhost", port);
-      ConnectionId = Guid.NewGuid();
     }
 
-    public async Task DisconnectAsync()
+    public async new Task DisconnectAsync()
     {
       await _gameServer.StopAsync();
-      await _gameClient.StopAsync();
+      await base.DisconnectAsync();
     }
 
-
-    public Task<(long gameTime, IAction action)> GetNextAction()
+    public new void Dispose()
     {
-      throw new System.NotImplementedException();
-    }
-
-    public Task SendActionAsync(long gameTime, IAction action)
-    {
-      throw new NotImplementedException();
-    }
-
-    private void QueueAction(string name, string message)
-    {
-
-    }
-    public void Dispose()
-    {
-      _gameClient.Dispose();
       _gameServer.Dispose();
     }
 
-    
-
-    public async Task ConnectLocalAsync()
+    public async new Task ConnectAsync(Guid gameId, IPlayer player)
     {
-      await _gameServer.StopAsync();
-      //We may need a thread sleep here
-      _gameClient.RegisterCallback(QueueAction);
-      await _gameClient.StartAsync();
+      await _gameServer.StartAsync();
+      await base.CreateLobby($"{player.DisplayName}'s local game", player);
+      var lobby = await GetLocalLobby();
+      await base.ConnectAsync(lobby.GameId, player);
+    }
+
+    private async Task<ILobby> GetLocalLobby(int timeout = 0)
+    {
+      var lobby = (await base.GetLobbyListing()).FirstOrDefault();
+      if(lobby == null)
+      {
+        if(timeout > 400)
+        {
+          throw new Exception("Failed to get local lobby");
+        }
+        Thread.Sleep(timeout);
+        return await GetLocalLobby(timeout+=100);
+      }
+      return lobby;
     }
 
     public Task ConnectDedicatedAsync()
     {
       throw new InvalidOperationException();
-    }
-
-    public Task<IEnumerable<ILobby>> GetLobbyListing()
-    {
-      throw new NotImplementedException();
     }
   }
 }

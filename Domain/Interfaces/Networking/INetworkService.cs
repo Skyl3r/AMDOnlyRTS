@@ -1,13 +1,16 @@
 
 using System;
+using System.Collections.Generic;
+using AmdOnlyRts.Domain.Interfaces.Game;
 
 namespace AmdOnlyRts.Domain.Interfaces.Networking
 {
-	public interface INetworkService
-	{
-    IConnection CreateLanGame(int port);
-    IConnection CreatePublicGame();
-    IConnection ConnectToServer(string address, int port);
+  public interface INetworkService
+  {
+    IConnection CreateLanGame(int port, IPlayer player);
+    IConnection CreatePublicGame(IPlayer player);
+    IConnection ConnectPublicGame(Guid gameId, string address, int port);
     IConnection JoinDirectGame(string address, int port);
-	}
+    IEnumerable<ILobby> GetLobbyListing(string address, int port);
+  }
 }

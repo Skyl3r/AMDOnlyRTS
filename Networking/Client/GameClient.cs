@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using AmdOnlyRts.Domain.Interfaces.Game;
 using Microsoft.AspNetCore.SignalR.Client;
 
 namespace AmdOnlyRts.Networking.Client
@@ -29,9 +30,19 @@ namespace AmdOnlyRts.Networking.Client
       return _connection.StopAsync();
     }
 
-    public Task Send(string name, string message)
+    public Task Chat(string name, string message)
     {
       return _connection.InvokeAsync("Send", name, message);
+    }
+    
+    public Task JoinLobby(Guid lobbyId, IPlayer player)
+    {
+      return _connection.InvokeAsync("JoinLobby", lobbyId, player);
+    }
+
+    public Task CreateLobby(string name, IPlayer player)
+    {
+      return _connection.InvokeAsync("CreateLobby", name, player);
     }
 
     public void RegisterCallback(Action<string, string> callBack)
@@ -39,7 +50,7 @@ namespace AmdOnlyRts.Networking.Client
       _connection.On<string, string>("Send", callBack);
     }
 
-    public void RegisterLobbyUpdateCallback(Action callBack)
+    public void RegisterLobbyUpdateCallback(Action<Guid> callBack)
     {
       _connection.On("PlayerJoin", callBack);
       _connection.On("PlayerLeave", callBack);

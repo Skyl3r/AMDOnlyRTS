@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using AmdOnlyRts.Domain.Interfaces.Game;
 using AmdOnlyRts.Domain.Interfaces.Networking;
 using AmdOnlyRts.Networking.Classes;
 
@@ -6,19 +8,27 @@ namespace AmdOnlyRts.Networking
 {
   public class SignalRNetworkService : INetworkService
   {
-    public IConnection ConnectToServer(string address, int port)
+    public IConnection ConnectPublicGame(Guid gameId, string address, int port)
     {
       throw new NotImplementedException();
     }
 
-    public IConnection CreateLanGame(int port)
+    public IConnection CreateLanGame(int port, IPlayer player)
     {
-      return new HostConnection(port);
+      var host = new HostConnection(port);
+      host.ConnectAsync(Guid.Empty, player).GetAwaiter().GetResult();
+      return host;
     }
 
-    public IConnection CreatePublicGame()
+    public IConnection CreatePublicGame(IPlayer player)
     {
       throw new NotImplementedException();
+    }
+
+    public IEnumerable<ILobby> GetLobbyListing(string address, int port)
+    {
+      var client = new ClientConnection(address, port);
+      return client.GetLobbyListing().GetAwaiter().GetResult();
     }
 
     public IConnection JoinDirectGame(string address, int port)
