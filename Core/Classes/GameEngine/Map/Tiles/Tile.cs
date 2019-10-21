@@ -1,4 +1,4 @@
-using AmdOnlyRts.Domain.Interfaces.Game;
+using AmdOnlyRts.Domain.Interfaces.GameEngine.Map;
 
 namespace AmdOnlyRts.Core.GameEngine.Map
 {

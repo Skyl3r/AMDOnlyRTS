@@ -1,9 +1,9 @@
 ﻿
 using System;
-using System.Threading.Tasks;
-using AmdOnlyRts.Renderer.Classes.LoveRenderer;
 using AmdOnlyRts.Core.GameEngine;
 using AmdOnlyRts.Core.GameEngine.Map;
+using AmdOnlyRts.Domain.Interfaces.Game;
+using AmdOnlyRts.Domain.Interfaces.GameEngine.Map;
 using AmdOnlyRts.Domain.Interfaces.Renderer;
 using Love;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,7 +16,8 @@ namespace AmdOnlyRts.Core
         private IRenderer _renderer;
         private ILogger<Program> _log;
         private MapGenerator mapGenerator;
-        private TileMap tileMap;
+        private ICamera camera;
+        private ITileMap tileMap;
 
 
         public Program(IRenderer renderer, ILogger<Program> log)
@@ -52,8 +53,11 @@ namespace AmdOnlyRts.Core
         {
 
             // This should be done based on input from lua through a Mod pack.
-            // Everything in this method is just a test.
-            
+            // Everything in this method is just a test
+            camera = new Camera();
+            camera.SetPosition(320, 240);
+            camera.SetSize(640, 480);
+
             MapGenerator mapGenerator = new MapGenerator();
 
             Random randomSeed = new Random();
@@ -90,33 +94,11 @@ namespace AmdOnlyRts.Core
 
         public void OnRendererDraw()
         {
-            //Drawing should be done in the renderer
-            //This is for testing purposes *ONLY*
-            for(int x = 0; x < tileMap.Width; x ++) {
-                for(int y = 0; y < tileMap.Height; y ++) {
-                    Tile tile = tileMap.data[x,y];
-                    switch(tile.TypeId) {
-                        case 0:
-                            Love.Graphics.SetColor(255, 0, 0);
-                            break;
-                        case 1:
-                            Love.Graphics.SetColor(0, 255, 0);
-                            break;
-                        case 2:
-                            Love.Graphics.SetColor(0, 0, 255);
-                            break;
-                        case 3:
-                            Love.Graphics.SetColor(255, 255, 0);
-                            break;
-                        case 4:
-                            Love.Graphics.SetColor(255, 255, 255);
-                            break;
-                    }
+            
+            _renderer.graphics.DrawTileMap(camera, tileMap);
 
-                    //2 is test tile size
-                    Love.Graphics.Rectangle(DrawMode.Fill, x*2, y*2, 2, 2);
-                }
-            }
+            //Move the camera slowly to test scrolling
+            camera.SetPosition(camera.Position.X + 0.1f, camera.Position.Y);
         }
 
         public void OnRendererUpdate()
