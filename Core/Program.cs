@@ -73,7 +73,7 @@ namespace AmdOnlyRts.Core
 
             //Create an even distribution map for tiles, for testing
             DistributionMap mapDistribution = new DistributionMap();
-            mapDistribution.addType(0, 10);
+            mapDistribution.addType(0, 20);
             mapDistribution.addType(1, 20);
             mapDistribution.addType(2, 20);
             mapDistribution.addType(3, 20);
@@ -82,6 +82,7 @@ namespace AmdOnlyRts.Core
 
             //Create the tile map
             tileMap = mapGenerator.NewTileMap(noiseMap, mapDistribution);
+
         }
 
         public void OnRendererDraw()
@@ -91,7 +92,6 @@ namespace AmdOnlyRts.Core
             for(int x = 0; x < tileMap.Width; x ++) {
                 for(int y = 0; y < tileMap.Height; y ++) {
                     Tile tile = tileMap.data[x,y];
-                    Console.WriteLine(tile.TypeId);
                     switch(tile.TypeId) {
                         case 0:
                             Love.Graphics.SetColor(255, 0, 0);

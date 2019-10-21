@@ -12,7 +12,7 @@ namespace AmdOnlyRts.Core.GameEngine.Map
 	public class MapGenerator
 	{
 
-		public TileMap NewTileMap(NoiseMap noiseMap, MapDistribution distribution){
+		public TileMap NewTileMap(NoiseMap noiseMap, DistributionMap distribution){
 			TileMap tileMap = new TileMap(noiseMap.Width, noiseMap.Height);
 
 			float noiseMapMax = noiseMap.Data.Cast<float>().Max();
