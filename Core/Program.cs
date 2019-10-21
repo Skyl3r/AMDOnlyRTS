@@ -55,39 +55,41 @@ namespace AmdOnlyRts.Core
             // This should be done based on input from lua through a Mod pack.
             // Everything in this method is just a test
             camera = new Camera();
-            camera.SetPosition(320, 240);
-            camera.SetSize(640, 480);
+            camera.SetPosition(500, 299);
+            camera.SetSize(1000, 600);
 
             MapGenerator mapGenerator = new MapGenerator();
 
             Random randomSeed = new Random();
-            int seed = randomSeed.Next(0, 1000000);
+            int seed = 696969;//randomSeed.Next(0, 1000000);
 
             //Noise Map Generation Data
-			float scale = 2000;
+			float scale = 150;
             //frequency increases each octave
-            int octaves = 25;
             //amplitude decreases each octave
+            int octaves = 15;
+            //amplitude increases the height of the noise values
             float initialAmplitude = 1.5f;
             //higher frequency, farther apart sample points. So the values change more rapidly.
-            float initialFrequency = 0.1f;
+            float initialFrequency = 0.75f;
             //rate at which amplitude decreases
-            float persistance = 0.75f;
+            float persistance = 0.35f;
             //rate at which frequency increases
-            float lacunarity = 2f;
+            float lacunarity = 3f;
             
-            NoiseMap noiseMap = mapGenerator.NewNoiseMap(100, 100, seed, scale, octaves, initialAmplitude, initialFrequency, persistance, lacunarity);
+            NoiseMap noiseMap = mapGenerator.NewNoiseMap(1000, 1000, seed, scale, octaves, initialAmplitude, initialFrequency, persistance, lacunarity);
 
             //Create an even distribution map for tiles, for testing
             DistributionMap mapDistribution = new DistributionMap();
-            mapDistribution.addType(0, 20);
-            mapDistribution.addType(1, 20);
-            mapDistribution.addType(2, 20);
-            mapDistribution.addType(3, 20);
-            mapDistribution.addType(4, 20);
-            mapDistribution.calculate();  //Order distribution
+            mapDistribution.addType(0, 10);
+            mapDistribution.addType(1, 15);
+            mapDistribution.addType(2, 25);
+            mapDistribution.addType(3, 35);
+            mapDistribution.addType(4, 15);
+            //mapDistribution.calculate();  //Order distribution
 
             //Create the tile map
+
             tileMap = mapGenerator.NewTileMap(noiseMap, mapDistribution);
 
         }
@@ -98,7 +100,7 @@ namespace AmdOnlyRts.Core
             _renderer.graphics.DrawTileMap(camera, tileMap);
 
             //Move the camera slowly to test scrolling
-            camera.SetPosition(camera.Position.X + 0.1f, camera.Position.Y);
+            camera.SetPosition(camera.Position.X + 0.3f, camera.Position.Y + 0.3f);
         }
 
         public void OnRendererUpdate()

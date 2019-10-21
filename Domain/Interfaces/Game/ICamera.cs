@@ -1,12 +1,12 @@
 
-using System.Numerics;
+using AmdOnlyRts.MathUtilities;
 
 namespace AmdOnlyRts.Domain.Interfaces.Game
 {
 	public interface ICamera
 	{
-		Vector2 Position { get; set; }
-		Vector2 Size { get; set; }
+		Vector2D Position { get; set; }
+		Vector2D Size { get; set; }
 
         float Zoom { get; set; }
 

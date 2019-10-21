@@ -14,20 +14,19 @@ namespace AmdOnlyRts.Core.GameEngine.Map
 
             float noiseMapMax = noiseMap.Data.Cast<float>().Max();
             float noiseMapMin = noiseMap.Data.Cast<float>().Min();
-
+            //Console.WriteLine(noiseMapMax);
             int distributionHeight = distribution.sum();
-
+            //Console.WriteLine(distributionHeight);
             for (int x = 0; x < noiseMap.Width; x++)
             {
                 for (int y = 0; y < noiseMap.Height; y++)
                 {
-                    float currentNoiseValue = noiseMap.Data[x, y] - noiseMapMin;
-                    float distributionNoise = currentNoiseValue / (noiseMapMax - noiseMapMin);
+                    float distributionNoise = Mathr.InverseLerp(noiseMapMin, noiseMapMax, noiseMap.Data[x, y]);
 
                     int tileDistribution = (int)((float)distributionHeight * distributionNoise);
-
+                    
                     int tileType = distribution.getTypeFromDistribution(tileDistribution);
-
+                   
                     tileMap.setTile(x, y, new Tile(tileType));
                 }
             }
@@ -47,8 +46,6 @@ namespace AmdOnlyRts.Core.GameEngine.Map
                 float offsetY = random.Next(-100000, 100000);
                 octaveOffsets[i] = new Vector2D(offsetX, offsetY);
             }
-            float maxNoiseHeight = float.MinValue;
-            float minNoiseHeight = float.MaxValue;
 
             for (int x = 0; x < width; x += 1)
             {
@@ -63,34 +60,27 @@ namespace AmdOnlyRts.Core.GameEngine.Map
                         float sampleY = y / scale * frequency + octaveOffsets[octave].Y;
 
 
-                        float noiseValue = Love.Mathf.Noise(sampleX, sampleY) * 2 - 1;
+                        float noiseValue = Love.Mathf.Noise(sampleX, sampleY);
                         noiseHeight += noiseValue * amplitude;
 
                         amplitude *= persistance;
                         frequency *= lacunarity;
 
                     }
-                    if (noiseHeight > maxNoiseHeight)
-                    {
-                        maxNoiseHeight = noiseHeight;
-                    }
-                    else if (noiseHeight < minNoiseHeight)
-                    {
-                        minNoiseHeight = noiseHeight;
-                    }
                     noiseMap.Data[x, y] = noiseHeight;
 
                 }
             }
 
-            for (int x = 1; x < width; x += 1)
+            float noiseMapMax = noiseMap.Data.Cast<float>().Max();
+            float noiseMapMin = noiseMap.Data.Cast<float>().Min();
+            for (int x = 0; x < width; x += 1)
             {
-                for (int y = 1; y < height; y += 1)
+                for (int y = 0; y < height; y += 1)
                 {
-                    noiseMap.Data[x, y] = Mathr.InverseLerp(minNoiseHeight, maxNoiseHeight, noiseMap.Data[x, y]);
+                    noiseMap.Data[x, y] = Mathr.InverseLerp(noiseMapMin, noiseMapMax, noiseMap.Data[x, y]);
                 }
             }
-
             return noiseMap;
         }
 

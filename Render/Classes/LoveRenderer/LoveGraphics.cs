@@ -47,20 +47,24 @@ namespace AmdOnlyRts.Renderer.Classes.LoveRenderer
                     //This is here only to test the camera class temporarily
                     switch(tile.TypeId) {
                         case 0:
-                            Love.Graphics.SetColor(255, 0, 0);
+                            Love.Graphics.SetColor(Color.Chocolate);
                             break;
                         case 1:
-                            Love.Graphics.SetColor(0, 255, 0);
+                            Love.Graphics.SetColor(Color.DarkOliveGreen);
                             break;
                         case 2:
-                            Love.Graphics.SetColor(0, 0, 255);
+                            Love.Graphics.SetColor(Color.DarkSlateBlue);
                             break;
                         case 3:
-                            Love.Graphics.SetColor(255, 255, 0);
+                            Love.Graphics.SetColor(Color.DimGray);
                             break;
                         case 4:
-                            Love.Graphics.SetColor(255, 255, 255);
+                            Love.Graphics.SetColor(Color.DarkSlateGray);
                             break;
+                        default:
+                            Love.Graphics.SetColor(Color.HotPink);
+                            break;
+
                     }
 
                     //Position data for tile
