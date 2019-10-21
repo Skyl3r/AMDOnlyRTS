@@ -30,8 +30,8 @@ namespace AmdOnlyRts.Renderer.Classes.LoveRenderer
             //we can render everything to a canvas and zoom the canvas in and out.
 
             //Identify camera view:
-            float minX = camera.Position.X - camera.Size.X / 2; //X is center of view
-            float minY = camera.Position.Y - camera.Size.Y / 2;
+            float minX = (camera.Position.X - camera.Size.X / 2); //X is center of view
+            float minY = (camera.Position.Y - camera.Size.Y / 2);
 
             float maxX = camera.Position.X + camera.Size.X / 2;
             float maxY = camera.Position.Y + camera.Size.Y / 2;

@@ -1,4 +1,5 @@
 using AmdOnlyRts.Domain.Interfaces.Renderer;
+using AmdOnlyRts.Domain.Interfaces.Renderer.Input;
 using Love;
 
 namespace AmdOnlyRts.Renderer.Classes.LoveRenderer
@@ -9,10 +10,12 @@ namespace AmdOnlyRts.Renderer.Classes.LoveRenderer
         public event OnUpdate OnUpdate;
         public event OnLoad OnLoad;
 
-        public IGraphics graphics { get; set; }
+        public IGraphics Graphics { get; set; }
+        public IInput Input { get; set; }
 
         public LoveRenderer() {
-            graphics = new LoveGraphics();
+            Graphics = new LoveGraphics();
+            Input = new Renderer.Classes.LoveRenderer.Input.Input();
         }
 
         public void Start() {
@@ -25,11 +28,12 @@ namespace AmdOnlyRts.Renderer.Classes.LoveRenderer
         }
 
         public override void Update(float dt) {
+            Input.Update();
             OnUpdate();
         }
 
         public override void Load() {
-            graphics.LoadTiles();
+            Graphics.LoadTiles();
             OnLoad();
         }
 

@@ -95,10 +95,10 @@ namespace AmdOnlyRts.Core
         public void OnRendererDraw()
         {
             
-            _renderer.graphics.DrawTileMap(camera, tileMap);
+            _renderer.Graphics.DrawTileMap(camera, tileMap);
 
             //Move the camera slowly to test scrolling
-            camera.SetPosition(camera.Position.X + 0.3f, camera.Position.Y + 0.3f);
+            //camera.SetPosition(camera.Position.X + 0.3f, camera.Position.Y + 0.3f);
             camera.Zoom -= 0.001f;
         }
 

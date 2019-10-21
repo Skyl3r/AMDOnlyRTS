@@ -1,5 +1,7 @@
 
 
+using AmdOnlyRts.Domain.Interfaces.Renderer.Input;
+
 namespace AmdOnlyRts.Domain.Interfaces.Renderer
 {
   public delegate void OnDraw();
@@ -12,7 +14,8 @@ namespace AmdOnlyRts.Domain.Interfaces.Renderer
     event OnUpdate OnUpdate;
     event OnLoad OnLoad;
 
-    IGraphics graphics { get; set; }
+    IInput Input { get; set; }
+    IGraphics Graphics { get; set; }
     void Start();
     
   }
