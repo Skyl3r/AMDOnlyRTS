@@ -4,63 +4,42 @@ using AmdOnlyRts.Domain.Interfaces.Game;
 using AmdOnlyRts.Domain.Interfaces.Renderer;
 using Love;
 using AmdOnlyRts.MathUtilities;
-
+using System.Linq;
 
 namespace AmdOnlyRts.Core.GameEngine.Map
 {
 	//We should consider moving this to domain
 	public class MapGenerator
 	{
-		private int width = 32;
-		private int height = 32;
-		private NoiseMap noiseMap;
-		private TileMap tileMap;
 
-		public int Width {get => width;}
-		public int Height {get => height;}
+		public TileMap NewTileMap(NoiseMap noiseMap, MapDistribution distribution){
+			TileMap tileMap = new TileMap(noiseMap.Width, noiseMap.Height);
 
-		public bool mapGenerated = false;
+			float noiseMapMax = noiseMap.Data.Cast<float>().Max();
+			float noiseMapMin = noiseMap.Data.Cast<float>().Min();
 
-		public NoiseMap NoiseMap { get => noiseMap;}
+			int distributionHeight = distribution.sum();
 
-		public TileMap TileMap => tileMap;
+			for(int x = 0; x < noiseMap.Width; x++){
+				for(int y = 0; y < noiseMap.Height; y++){
+					float currentNoiseValue = noiseMap.Data[x, y] - noiseMapMin;
+					float distributionNoise = currentNoiseValue / (noiseMapMax - noiseMapMin);
 
-		public float[,] ChunkMap => throw new NotImplementedException();
+					int tileDistribution = (int) ((float)distributionHeight * distributionNoise);
 
-		public void initMapGeneration(int width, int height)
-			{
-				Random randomSeed = new Random();
-				int seed = randomSeed.Next(0, 1000000);
-				float scale = 2000;
+					int tileType = distribution.getTypeFromDistribution(tileDistribution);
 
-				//amplitude decreases each octave
-				//frequency increases each octave
-				int octaves = 25;
-				//
-				float initialAmplitude = 1.5f;
-				//higher frequency, farther apart sample points. So the values change more rapidly.
-				float initialFrequency = 0.1f;
-				//rate at which amplitude decreases
-				float persistance = 0.75f;
-				//rate at which frequency increases
-				float lacunarity = 2f;
-				noiseMap = new NoiseMap(width, height);
-				generateNoiseMap(width, height, seed, scale, octaves,initialAmplitude, initialFrequency, persistance, lacunarity);
-				tileMap = new TileMap(width, height);
-				generateTileMap();
-		}
-		private void generateTileMap(){
-			tileMap.Map = new Tile[noiseMap.Map.GetLength(0),noiseMap.Map.GetLength(1)];
-			for(int x = 0; x < noiseMap.Map.GetLength(0); x++){
-				for(int y = 0; y < noiseMap.Map.GetLength(1); y++){
-					tileMap.Map[x,y] = new Tile(x, y,100f/noiseMap.Map.GetLength(0)*10, noiseMap.Map[x,y]);
+					tileMap.setTile(x, y, new Tile(tileType));
 				}
 			}
+
+			return tileMap;
 		}
-		public void generateNoiseMap(int width, int height, int seed, float scale, int octaves, float initialAmplitude, float initialFrequency, float persistance, float lacunarity)
+
+		public NoiseMap NewNoiseMap(int width, int height, int seed, float scale, int octaves, float initialAmplitude, float initialFrequency, float persistance, float lacunarity)
 		{
-			float[,] resultMap = new float[width , height];
-			//offsetX += 0.1f;
+			NoiseMap noiseMap = new NoiseMap(width, height);
+			
 			Random random = new Random(seed);
 			Vector2D[] octaveOffsets = new Vector2D[octaves];
 			for(int i = 0; i < octaves; i++)
@@ -99,7 +78,7 @@ namespace AmdOnlyRts.Core.GameEngine.Map
 					{
 						minNoiseHeight = noiseHeight;
 					}
-					resultMap[x , y] = noiseHeight;
+					noiseMap.Data[x , y] = noiseHeight;
 					
 				}
 			}
@@ -108,12 +87,11 @@ namespace AmdOnlyRts.Core.GameEngine.Map
 			{
 				for(int y = 1; y < height; y += 1)
 				{
-					resultMap[x , y] = Mathr.InverseLerp(minNoiseHeight, maxNoiseHeight, resultMap[x,y]);
+					noiseMap.Data[x , y] = Mathr.InverseLerp(minNoiseHeight, maxNoiseHeight, noiseMap.Data[x,y]);
 				}
 			}
-			mapGenerated = true;
-			Console.WriteLine("done");
-			noiseMap.Map = resultMap;
+			
+			return noiseMap;
 		}
 		
 	}

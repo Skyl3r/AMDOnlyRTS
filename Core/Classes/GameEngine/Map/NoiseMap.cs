@@ -8,28 +8,23 @@ namespace AmdOnlyRts.Core.GameEngine.Map
 {
     public class NoiseMap
     {
-        private float[,] map;
 
-        private int width;
-        private int height;
+        public int Width;
+        public int Height;
+        public float[,] Data;
         
         public NoiseMap(int w, int h){
-            width = w;
-            height = h;
-            map = new float[width,height];
+            Width = w;
+            Height = h;
+            Data = new float[Width,Height];
         }
 
-        public float[,] Map { get => map; set => setMap(value);}
-
         private void setMap(float[,] valueMap){
-            if(valueMap.GetLength(0) == width && valueMap.GetLength(1) == height)
+            if(valueMap.GetLength(0) == Width && valueMap.GetLength(1) == Height)
             {
-                map = valueMap;
+                Data = valueMap;
             }
             else throw new Exception("NoiseMap.Map size does not match the array size given.");
         }
-
-        public int Width => width;
-        public int Height => height;
     }
 }
