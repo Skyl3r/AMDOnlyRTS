@@ -51,6 +51,9 @@ namespace AmdOnlyRts.Core
         public void OnRendererLoad()
         {
 
+            // This should be done based on input from lua through a Mod pack.
+            // Everything in this method is just a test.
+            
             MapGenerator mapGenerator = new MapGenerator();
 
             Random randomSeed = new Random();
