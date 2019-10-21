@@ -1,5 +1,5 @@
 # AMD only RTS
-This is at a highly moddable, cross platform and open source RTS game (That only runs on AMD).
+This is a highly moddable, cross platform and open source RTS game (That only runs on AMD).
 
 
 ## Index
