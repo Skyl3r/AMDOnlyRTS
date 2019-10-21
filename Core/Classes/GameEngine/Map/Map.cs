@@ -1,9 +1,4 @@
-using System;
-using System.Threading.Tasks;
-using AmdOnlyRts.Domain.Interfaces.Game;
-using AmdOnlyRts.Domain.Interfaces.Renderer;
-using Love;
-using AmdOnlyRts.MathUtilities;
+
 
 namespace AmdOnlyRts.Core.GameEngine.Map
 {
@@ -15,17 +10,20 @@ namespace AmdOnlyRts.Core.GameEngine.Map
 
         private int[,] data;
 
-        public Map(int width, int height) {
+        public Map(int width, int height)
+        {
             data = new int[width, height];
             Width = width;
             Height = height;
         }
 
-        public int getWidth() {
+        public int getWidth()
+        {
             return Width;
         }
 
-        public int getHeight() {
+        public int getHeight()
+        {
             return Height;
         }
     }

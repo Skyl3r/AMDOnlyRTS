@@ -1,9 +1,5 @@
 using System;
-using System.Threading.Tasks;
-using AmdOnlyRts.Domain.Interfaces.Game;
-using AmdOnlyRts.Domain.Interfaces.Renderer;
-using Love;
-using AmdOnlyRts.MathUtilities;
+
 namespace AmdOnlyRts.Core.GameEngine.Map
 {
     public class NoiseMap
@@ -12,15 +8,17 @@ namespace AmdOnlyRts.Core.GameEngine.Map
         public int Width;
         public int Height;
         public float[,] Data;
-        
-        public NoiseMap(int w, int h){
+
+        public NoiseMap(int w, int h)
+        {
             Width = w;
             Height = h;
-            Data = new float[Width,Height];
+            Data = new float[Width, Height];
         }
 
-        private void setMap(float[,] valueMap){
-            if(valueMap.GetLength(0) == Width && valueMap.GetLength(1) == Height)
+        private void setMap(float[,] valueMap)
+        {
+            if (valueMap.GetLength(0) == Width && valueMap.GetLength(1) == Height)
             {
                 Data = valueMap;
             }

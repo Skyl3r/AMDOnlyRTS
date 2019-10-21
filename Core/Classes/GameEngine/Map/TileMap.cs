@@ -1,9 +1,4 @@
 using System;
-using System.Threading.Tasks;
-using AmdOnlyRts.Domain.Interfaces.Game;
-using AmdOnlyRts.Domain.Interfaces.Renderer;
-using Love;
-using AmdOnlyRts.MathUtilities;
 
 namespace AmdOnlyRts.Core.GameEngine.Map
 {
@@ -20,10 +15,11 @@ namespace AmdOnlyRts.Core.GameEngine.Map
             data = new Tile[width, height];
         }
 
-        public void setTile(int x, int y, Tile tile) {
+        public void setTile(int x, int y, Tile tile)
+        {
             data[x, y] = tile;
         }
-        
+
         public void setMap(Tile[,] valueMap)
         {
 

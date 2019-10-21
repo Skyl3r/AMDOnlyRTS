@@ -1,9 +1,3 @@
-using System;
-using System.Threading.Tasks;
-using AmdOnlyRts.Domain.Interfaces.Game;
-using AmdOnlyRts.Domain.Interfaces.Renderer;
-using Love;
-using AmdOnlyRts.MathUtilities;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,26 +8,33 @@ namespace AmdOnlyRts.Core.GameEngine.Map
         //Distribution will be a list of ints where each int represents the frequency of appearance
         public Dictionary<int, int> Distribution;
 
-        public DistributionMap() {
+        public DistributionMap()
+        {
             Distribution = new Dictionary<int, int>();
         }
 
-        public void addType(int tileTypeId, int distribution) {
+        public void addType(int tileTypeId, int distribution)
+        {
             Distribution.Add(tileTypeId, distribution);
         }
 
-        public int getTypeFromDistribution(int distribution) {
-            if(distribution > this.sum()) {
+        public int getTypeFromDistribution(int distribution)
+        {
+            if (distribution > this.sum())
+            {
                 return Distribution.Last().Key;
             }
-            if(distribution < 0) {
+            if (distribution < 0)
+            {
                 return Distribution.First().Key;
             }
 
             int typeId = 0;
             int currentSum = 0;
-            foreach(KeyValuePair<int, int> entry in Distribution) {
-                if(distribution > currentSum && distribution < currentSum + entry.Value) {
+            foreach (KeyValuePair<int, int> entry in Distribution)
+            {
+                if (distribution > currentSum && distribution < currentSum + entry.Value)
+                {
                     typeId = entry.Key;
                     break;
                 }
@@ -43,13 +44,16 @@ namespace AmdOnlyRts.Core.GameEngine.Map
             return typeId;
         }
 
-        public void calculate() {
+        public void calculate()
+        {
             Distribution = Distribution.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
         }
 
-        public int sum() {
+        public int sum()
+        {
             int sum = 0;
-            foreach(KeyValuePair<int, int> typeId in Distribution) {
+            foreach (KeyValuePair<int, int> typeId in Distribution)
+            {
                 sum += typeId.Value;
             }
 
