@@ -9,12 +9,12 @@ using System.Linq;
 
 namespace AmdOnlyRts.Core.GameEngine.Map
 {
-    public class MapDistribution
+    public class DistributionMap
     {
         //Distribution will be a list of ints where each int represents the frequency of appearance
         public Dictionary<int, int> Distribution;
 
-        public MapDistribution() {
+        public DistributionMap() {
             Distribution = new Dictionary<int, int>();
         }
 
