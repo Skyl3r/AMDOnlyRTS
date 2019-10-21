@@ -14,5 +14,6 @@ namespace AmdOnlyRts.Domain.Interfaces.Renderer
 
     IGraphics graphics { get; set; }
     void Start();
+    
   }
 }
