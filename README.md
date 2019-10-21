@@ -4,10 +4,11 @@ This is a highly moddable, cross platform and open source RTS game (That only ru
 
 ## Index
 - [Technology](#technology)
-- [Get involved!](#wanna-get-involved)
 - [Build Guide](#build-guide)
   - [Linux](#linux)
   - [Windows](#windows)
+- [Get involved!](#wanna-get-involved)
+- [Credits](#credits)
 
 
 ## Technology
@@ -44,3 +45,6 @@ This is a highly moddable, cross platform and open source RTS game (That only ru
 
 ### Wanna get involved?
 Contact us at our Freenode IRC channel: **#AMDOnlyRTS**
+
+### Credits
+Free art assets from user [Hyptosis](https://opengameart.org/users/hyptosis) at Open Game Art
