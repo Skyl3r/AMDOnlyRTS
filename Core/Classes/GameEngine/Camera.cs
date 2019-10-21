@@ -9,6 +9,10 @@ namespace AmdOnlyRts.Core.GameEngine
         public Vector2D Size { get; set; }
         public float Zoom { get; set; }
 
+        public Camera() {
+            Zoom = 1.00f; //No zoom
+        }
+
         public void SetPosition(float x, float y) {
             Position = new Vector2D(x, y);
         }

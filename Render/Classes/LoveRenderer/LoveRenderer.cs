@@ -29,6 +29,7 @@ namespace AmdOnlyRts.Renderer.Classes.LoveRenderer
         }
 
         public override void Load() {
+            graphics.LoadTiles();
             OnLoad();
         }
 

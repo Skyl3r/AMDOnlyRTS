@@ -84,8 +84,6 @@ namespace AmdOnlyRts.Core
             mapDistribution.addType(0, 10);
             mapDistribution.addType(1, 15);
             mapDistribution.addType(2, 25);
-            mapDistribution.addType(3, 35);
-            mapDistribution.addType(4, 15);
             //mapDistribution.calculate();  //Order distribution
 
             //Create the tile map
@@ -101,6 +99,7 @@ namespace AmdOnlyRts.Core
 
             //Move the camera slowly to test scrolling
             camera.SetPosition(camera.Position.X + 0.3f, camera.Position.Y + 0.3f);
+            camera.Zoom -= 0.001f;
         }
 
         public void OnRendererUpdate()
