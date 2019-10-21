@@ -60,8 +60,13 @@ namespace AmdOnlyRts.Renderer.Classes.LoveRenderer
                     int cameraOffsetY = minTileY * (int)tileSize - (int)minY;
 
 
+                    //Get tile location
                     int _x = cameraOffsetX + (x - minTileX) * (int)tileSize;
                     int _y = cameraOffsetY + (y - minTileY) * (int)tileSize;
+
+                    //Account for zoom
+                    _x -= (int)((defaultTileSize - tileSize)/2);
+                    _y -= (int)((defaultTileSize - tileSize)/2);
 
                     Love.Graphics.Draw(image, _x, _y, 0, camera.Zoom, camera.Zoom);
                 }
