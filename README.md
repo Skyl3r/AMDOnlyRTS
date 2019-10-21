@@ -25,7 +25,7 @@ This is a highly moddable, cross platform and open source RTS game (That only ru
 1. (Optional) Install [Visual Studio Code](https://code.visualstudio.com/download)
 1. Clone repository: `git clone https://github.com/Skyl3r/AMDOnlyRTS`
 1. Open the root folder in Visual Studio Code
-1. Build from commandline to get all prerequisites: `dotnet build ./Core/AMDOnlyRts.Core.csproj`
+1. Build from terminal to get all prerequisites: `dotnet build ./Core/AMDOnlyRts.Core.csproj`
 
 
 ### Windows
