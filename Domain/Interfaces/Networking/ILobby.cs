@@ -9,6 +9,6 @@ namespace AmdOnlyRts.Domain.Interfaces.Networking
 		Dictionary<string, IPlayer> Players { get; set; }
 
 		Guid GameId { get; set; }
-		public string DisplayName { get; set; }
+		string DisplayName { get; set; }
 	}
 }
