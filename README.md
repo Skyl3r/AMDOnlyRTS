@@ -1,4 +1,4 @@
-# AMD only RTS
+# AMD Only RTS
 This is a highly moddable, cross platform and open source RTS game (That only runs on AMD).
 
 
@@ -44,7 +44,7 @@ This is a highly moddable, cross platform and open source RTS game (That only ru
 
 
 ### Wanna get involved?
-Contact us at our Freenode IRC channel: **#AMDOnlyRTS**
+Join us on our Freenode IRC channel: **#AMDOnlyRTS**
 
 ### Credits
 Free art assets from user [Hyptosis](https://opengameart.org/users/hyptosis) at Open Game Art
