@@ -11,7 +11,7 @@ using Microsoft.Extensions.Logging;
 
 namespace AmdOnlyRts.Core
 {
-    public class Program : Scene
+    public class Program
     {
         private IRenderer _renderer;
         private ILogger<Program> _log;

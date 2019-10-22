@@ -1,5 +1,6 @@
 using AmdOnlyRts.Domain.Interfaces.Renderer;
 using AmdOnlyRts.Domain.Interfaces.Renderer.Input;
+using AmdOnlyRts.Renderer.Classes.LoveRenderer.Input;
 using Love;
 
 namespace AmdOnlyRts.Renderer.Classes.LoveRenderer
@@ -15,7 +16,7 @@ namespace AmdOnlyRts.Renderer.Classes.LoveRenderer
 
         public LoveRenderer() {
             Graphics = new LoveGraphics();
-            Input = new LoveInput()
+            Input = new LoveInput();
         }
 
         public void Start() {
