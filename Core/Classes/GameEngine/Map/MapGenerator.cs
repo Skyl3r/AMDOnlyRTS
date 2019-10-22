@@ -1,6 +1,7 @@
 ﻿using System;
 using AmdOnlyRts.MathUtilities;
 using System.Linq;
+using System.Numerics;
 
 namespace AmdOnlyRts.Core.GameEngine.Map
 {
@@ -39,12 +40,12 @@ namespace AmdOnlyRts.Core.GameEngine.Map
             NoiseMap noiseMap = new NoiseMap(width, height);
 
             Random random = new Random(seed);
-            Vector2D[] octaveOffsets = new Vector2D[octaves];
+            Vector2[] octaveOffsets = new Vector2[octaves];
             for (int i = 0; i < octaves; i++)
             {
                 float offsetX = random.Next(-100000, 100000);
                 float offsetY = random.Next(-100000, 100000);
-                octaveOffsets[i] = new Vector2D(offsetX, offsetY);
+                octaveOffsets[i] = new Vector2(offsetX, offsetY);
             }
 
             for (int x = 0; x < width; x += 1)

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Diagnostics;
+using System.Numerics;
+
 namespace AmdOnlyRts.MathUtilities
 {
     public class Mathr
@@ -10,7 +12,7 @@ namespace AmdOnlyRts.MathUtilities
         private static Random _random = new Random();
         private static int[] _permutation;
 
-        private static Vector2D[] _gradients;
+        private static Vector2[] _gradients;
 
         private static void CalculatePermutation(out int[] p)
         {
@@ -35,21 +37,21 @@ namespace AmdOnlyRts.MathUtilities
             CalculatePermutation(out _permutation);
         }
 
-        private static void CalculateGradients(out Vector2D[] grad)
+        private static void CalculateGradients(out Vector2[] grad)
         {
-            grad = new Vector2D[256];
+            grad = new Vector2[256];
 
             for (var i = 0; i < grad.Length; i++)
             {
-                Vector2D gradient;
+                Vector2 gradient;
 
                 do
                 {
-                    gradient = new Vector2D((float)(_random.NextDouble() * 2 - 1), (float)(_random.NextDouble() * 2 - 1));
+                    gradient = new Vector2((float)(_random.NextDouble() * 2 - 1), (float)(_random.NextDouble() * 2 - 1));
                 }
                 while (gradient.LengthSquared() >= 1);
 
-                gradient.Normalize();
+                gradient = Vector2.Normalize(gradient);
                 grad[i] = gradient;
             }
 
@@ -69,24 +71,24 @@ namespace AmdOnlyRts.MathUtilities
         public static float Noise(float x, float y)
         {
             
-            var cell = new Vector2D((float)Math.Floor(x), (float)Math.Floor(y));
+            var cell = new Vector2((float)Math.Floor(x), (float)Math.Floor(y));
             
             var total = 0f;
 
-            var corners = new[] { new Vector2D(0, 0), new Vector2D(0, 1), new Vector2D(1, 0), new Vector2D(1, 1) };
+            var corners = new[] { new Vector2(0, 0), new Vector2(0, 1), new Vector2(1, 0), new Vector2(1, 1) };
 
             foreach (var n in corners)
             {
-                var ij = Vector2D.Sum(cell, n);
+                var ij = cell + n;
                 
-                var uv = new Vector2D(x - ij.X, y - ij.Y);
+                var uv = new Vector2(x - ij.X, y - ij.Y);
 
                 var index = _permutation[(int)ij.X % _permutation.Length];
                 index = _permutation[(index + (int)ij.Y) % _permutation.Length];
                 
                 var grad = _gradients[index % _gradients.Length];
 
-                total += Q(uv.X, uv.Y) * Vector2D.Dot(grad, uv);
+                total += Q(uv.X, uv.Y) * Vector2.Dot(grad, uv);
             }
 
             return Math.Max(Math.Min(total, 1f), -1f);

@@ -5,7 +5,6 @@ using AmdOnlyRts.Core.GameEngine.Map;
 using AmdOnlyRts.Domain.Interfaces.Game;
 using AmdOnlyRts.Domain.Interfaces.GameEngine.Map;
 using AmdOnlyRts.Domain.Interfaces.Renderer;
-using Love;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
