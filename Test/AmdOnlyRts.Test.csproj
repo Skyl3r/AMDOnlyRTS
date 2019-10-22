@@ -4,5 +4,11 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Render\AmdOnlyRts.Render.csproj" />
+    <ProjectReference Include="..\Domain\AmdOnlyRts.Domain.csproj" />
+    <ProjectReference Include="..\Networking\AmdOnlyRts.Networking.csproj" />
+    <ProjectReference Include="..\MathUtilities\AmdOnlyRts.MathUtilities.csproj" />
+  </ItemGroup>
 
 </Project>
