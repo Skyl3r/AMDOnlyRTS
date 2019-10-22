@@ -80,15 +80,14 @@ namespace AmdOnlyRts.Core
             NoiseMap noiseMap = mapGenerator.NewNoiseMap(1000, 1000, seed, scale, octaves, initialAmplitude, initialFrequency, persistance, lacunarity);
 
             //Create an even distribution map for tiles, for testing
-            DistributionMap mapDistribution = new DistributionMap();
-            mapDistribution.addType(0, 10);
-            mapDistribution.addType(1, 15);
-            mapDistribution.addType(2, 25);
-            //mapDistribution.calculate();  //Order distribution
+            DistributionMap distributionMap = new DistributionMap();
+            distributionMap.addType(0, 10);
+            distributionMap.addType(1, 15);
+            distributionMap.addType(2, 25);
 
             //Create the tile map
 
-            tileMap = mapGenerator.NewTileMap(noiseMap, mapDistribution);
+            tileMap = mapGenerator.NewTileMap(noiseMap, distributionMap);
 
         }
 

@@ -15,7 +15,7 @@ namespace AmdOnlyRts.Renderer.Classes.LoveRenderer
 
         public LoveRenderer() {
             Graphics = new LoveGraphics();
-            Input = new Renderer.Classes.LoveRenderer.Input.Input();
+            Input = new LoveInput()
         }
 
         public void Start() {
