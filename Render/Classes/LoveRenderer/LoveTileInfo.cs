@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
-using AmdOnlyRts.Domain.Interfaces.Renderer;
 using Love;
 
 namespace AmdOnlyRts.Renderer.Classes.LoveRenderer
 {
+  // I believe this is implementation specific per renderer
+  // So I don't know if it makes sense to create an interface for it.
+
   public class LoveTileInfo {
     Dictionary<int, Love.Image> Images { get; set; }
 

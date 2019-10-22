@@ -1,6 +1,4 @@
-
 using System.Numerics;
-using AmdOnlyRts.MathUtilities;
 
 namespace AmdOnlyRts.Domain.Interfaces.Game
 {

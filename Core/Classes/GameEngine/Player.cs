@@ -1,5 +1,4 @@
 ﻿using AmdOnlyRts.Domain.Interfaces.Game;
-using AmdOnlyRts.Domain.Interfaces.Networking;
 
 namespace AmdOnlyRts.Core.GameEngine
 {

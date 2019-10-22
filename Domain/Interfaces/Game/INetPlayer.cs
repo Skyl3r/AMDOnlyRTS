@@ -1,6 +1,4 @@
 
-using System;
-using AmdOnlyRts.Domain.Interfaces.Game;
 
 namespace AmdOnlyRts.Domain.Interfaces.Game
 {

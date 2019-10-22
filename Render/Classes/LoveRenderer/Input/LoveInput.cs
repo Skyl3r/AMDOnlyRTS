@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using AmdOnlyRts.Domain.Interfaces.Renderer;
 using AmdOnlyRts.Domain.Interfaces.Renderer.Input;
 using Love;
 

@@ -1,4 +1,3 @@
-using System;
 using AmdOnlyRts.Domain.Interfaces.Game;
 using AmdOnlyRts.Domain.Interfaces.GameEngine.Map;
 using AmdOnlyRts.Domain.Interfaces.Renderer;
