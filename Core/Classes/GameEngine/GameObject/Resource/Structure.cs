@@ -1,9 +1,9 @@
 ﻿using AmdOnlyRts.Domain.Interfaces.GameObject.Structure;
 using System;
 
-namespace AmdOnlyRts.Core.Classes.GameEngine.GameObject.Structure
+namespace AmdOnlyRts.Core.Classes.GameEngine.GameObject.Resource
 {
-	public class StaticDefense : IStaticDefense
+	public class Resource : IStructure
 	{
 		public string Description { get; set; }
 

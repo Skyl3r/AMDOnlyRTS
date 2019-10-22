@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using AmdOnlyRts.Core.Classes.GameEngine.GameObject.Resource;
 using AmdOnlyRts.Core.Classes.GameEngine.GameObject.Structure;
-using AmdOnlyRts.Core.Classes.GameEngine.GameObject.Structure.ResourceCollector;
-using AmdOnlyRts.Core.Classes.GameEngine.GameObject.Structure.UnitFactory;
 using AmdOnlyRts.Core.Classes.GameEngine.GameObject.Unit;
 using AmdOnlyRts.Core.LuaHelp;
 using AmdOnlyRts.Domain.Interfaces.GameEngine.Mod;
@@ -23,23 +22,10 @@ namespace AmdOnlyRts.Core.Classes.GameEngine.Mod
 
 			Data = new Dictionary<Type, List<object>>();
 
-			Data.Add(typeof(AirUnit), new List<object>());
-			Data.Add(typeof(LandUnit), new List<object>());
-			Data.Add(typeof(NavalUnit), new List<object>());
-
-			Data.Add(typeof(LandFactory), new List<object>());
-			Data.Add(typeof(AirFactory), new List<object>());
-			Data.Add(typeof(NavalFactory), new List<object>());
-			Data.Add(typeof(Garrison), new List<object>());
-			Data.Add(typeof(StaticDefense), new List<object>());
+			Data.Add(typeof(Unit), new List<object>());
+			Data.Add(typeof(Resource), new List<object>());
 			Data.Add(typeof(Structure), new List<object>());
-			Data.Add(typeof(Energy), new List<object>());
-			Data.Add(typeof(Mass), new List<object>());
-			Data.Add(typeof(Supply), new List<object>());
-
-			// Data.Add(typeof(Map), new List<object>());
-			// Data.Add(typeof(SpawnPoint), new List<object>());
-			// Data.Add(typeof(Player), new List<object>());
+			
 		}
 
 
