@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AmdOnlyRts.Domain.Classes.Networking;
-using AmdOnlyRts.Domain.Interfaces.Game;
+using AmdOnlyRts.Domain.Interfaces.GameEngine.Game;
 using Microsoft.AspNetCore.SignalR;
 
 namespace AmdOnlyRts.Networking.Server.Hubs

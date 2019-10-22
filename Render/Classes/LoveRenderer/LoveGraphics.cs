@@ -1,4 +1,5 @@
-using AmdOnlyRts.Domain.Interfaces.Game;
+
+using AmdOnlyRts.Domain.Interfaces.GameEngine.Game;
 using AmdOnlyRts.Domain.Interfaces.GameEngine.Map;
 using AmdOnlyRts.Domain.Interfaces.Renderer;
 using Love;
@@ -81,7 +82,6 @@ namespace AmdOnlyRts.Renderer.Classes.LoveRenderer
             //Love.Graphics.SetColor(new Color(0, 255, 0 , 255));
             Love.Graphics.Rectangle(DrawMode.Fill, x, y, width, height);
         }
-
     }
 
 

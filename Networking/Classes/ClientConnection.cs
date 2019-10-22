@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using AmdOnlyRts.Domain.Interfaces.Game;
+using AmdOnlyRts.Domain.Interfaces.GameEngine.Game;
 using AmdOnlyRts.Domain.Interfaces.Networking;
 using AmdOnlyRts.Networking.Client;
 using Newtonsoft.Json;

@@ -1,6 +1,6 @@
 
 
-using AmdOnlyRts.Domain.Interfaces.Game;
+using AmdOnlyRts.Domain.Interfaces.GameEngine.Game;
 using AmdOnlyRts.Domain.Interfaces.GameEngine.Map;
 
 namespace AmdOnlyRts.Domain.Interfaces.Renderer

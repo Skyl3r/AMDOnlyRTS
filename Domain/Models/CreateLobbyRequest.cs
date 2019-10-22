@@ -1,5 +1,5 @@
 using AmdOnlyRts.Domain.Enums;
-using AmdOnlyRts.Domain.Interfaces.Game;
+using AmdOnlyRts.Domain.Interfaces.GameEngine.Game;
 
 namespace AmdOnlyRts.Domain.Models
 {

@@ -1,4 +1,4 @@
-namespace AmdOnlyRts.Domain.Interfaces.GameObject
+namespace AmdOnlyRts.Domain.Interfaces.GameEngine.GameObject
 {
 	public interface ILuaObject
 	{

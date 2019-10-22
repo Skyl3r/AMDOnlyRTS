@@ -2,7 +2,7 @@
 using System;
 using AmdOnlyRts.Core.GameEngine;
 using AmdOnlyRts.Core.GameEngine.Map;
-using AmdOnlyRts.Domain.Interfaces.Game;
+using AmdOnlyRts.Domain.Interfaces.GameEngine.Game;
 using AmdOnlyRts.Domain.Interfaces.GameEngine.Map;
 using AmdOnlyRts.Domain.Interfaces.Renderer;
 using Microsoft.Extensions.DependencyInjection;

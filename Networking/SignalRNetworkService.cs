@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using AmdOnlyRts.Domain.Interfaces.Game;
+using AmdOnlyRts.Domain.Interfaces.GameEngine.Game;
 using AmdOnlyRts.Domain.Interfaces.Networking;
 using AmdOnlyRts.Networking.Classes;
 

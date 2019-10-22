@@ -1,7 +1,7 @@
 
 using System;
 using System.Collections.Generic;
-using AmdOnlyRts.Domain.Interfaces.Game;
+using AmdOnlyRts.Domain.Interfaces.GameEngine.Game;
 
 namespace AmdOnlyRts.Domain.Interfaces.Networking
 {

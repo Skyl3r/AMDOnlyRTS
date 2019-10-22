@@ -1,9 +1,8 @@
-﻿using AmdOnlyRts.Domain.Interfaces.GameObject.Structure;
-using System;
+﻿using AmdOnlyRts.Domain.Interfaces.GameEngine.GameObject.Resource;
 
 namespace AmdOnlyRts.Core.Classes.GameEngine.GameObject.Resource
 {
-	public class Resource : IStructure
+	public class Resource : IResource
 	{
 		public string Description { get; set; }
 
@@ -11,7 +10,7 @@ namespace AmdOnlyRts.Core.Classes.GameEngine.GameObject.Resource
 
 		public void OnSelected()
 		{
-			throw new NotImplementedException();
+			
 		}
 	}
 }

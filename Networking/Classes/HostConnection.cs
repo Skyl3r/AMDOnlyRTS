@@ -4,7 +4,7 @@ using AmdOnlyRts.Domain.Interfaces.Networking;
 using AmdOnlyRts.Networking.Server;
 using System.Linq;
 using System.Threading;
-using AmdOnlyRts.Domain.Interfaces.Game;
+using AmdOnlyRts.Domain.Interfaces.GameEngine.Game;
 
 namespace AmdOnlyRts.Networking.Classes
 {

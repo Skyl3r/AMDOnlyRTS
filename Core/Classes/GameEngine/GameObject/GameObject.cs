@@ -1,4 +1,4 @@
-﻿using AmdOnlyRts.Domain.Interfaces.GameObject;
+﻿using AmdOnlyRts.Domain.Interfaces.GameEngine.GameObject;
 using System;
 
 namespace AmdOnlyRts.Core.Classes.GameEngine.GameObject

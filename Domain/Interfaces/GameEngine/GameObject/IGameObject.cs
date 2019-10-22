@@ -1,4 +1,4 @@
-﻿namespace AmdOnlyRts.Domain.Interfaces.GameObject
+﻿namespace AmdOnlyRts.Domain.Interfaces.GameEngine.GameObject
 {
 	public interface IGameObject
 	{
@@ -7,6 +7,5 @@
 		string Description { get; set; } 
 
 		void OnSelected();
-
-	}
+    }
 }

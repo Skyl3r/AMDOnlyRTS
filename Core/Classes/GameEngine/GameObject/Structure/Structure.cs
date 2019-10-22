@@ -1,5 +1,5 @@
-﻿using AmdOnlyRts.Domain.Interfaces.GameObject.Structure;
-using System;
+﻿using System;
+using AmdOnlyRts.Domain.Interfaces.GameEngine.GameObject.Structure;
 
 namespace AmdOnlyRts.Core.Classes.GameEngine.GameObject.Structure
 {

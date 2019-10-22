@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using AmdOnlyRts.Domain.Interfaces.Game;
+using AmdOnlyRts.Domain.Interfaces.GameEngine.Game;
 using Microsoft.AspNetCore.SignalR.Client;
 
 namespace AmdOnlyRts.Networking.Client

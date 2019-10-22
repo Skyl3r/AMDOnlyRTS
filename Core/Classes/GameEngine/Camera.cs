@@ -1,5 +1,5 @@
 using System.Numerics;
-using AmdOnlyRts.Domain.Interfaces.Game;
+using AmdOnlyRts.Domain.Interfaces.GameEngine.Game;
 
 namespace AmdOnlyRts.Core.GameEngine
 {

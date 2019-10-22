@@ -1,6 +1,6 @@
 using System.Numerics;
 
-namespace AmdOnlyRts.Domain.Interfaces.Game
+namespace AmdOnlyRts.Domain.Interfaces.GameEngine.Game
 {
 	public interface ICamera
 	{

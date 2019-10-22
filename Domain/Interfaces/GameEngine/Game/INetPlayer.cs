@@ -1,6 +1,6 @@
 
 
-namespace AmdOnlyRts.Domain.Interfaces.Game
+namespace AmdOnlyRts.Domain.Interfaces.GameEngine.Game
 {
 	public interface IPlayer
 	{
