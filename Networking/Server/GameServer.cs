@@ -2,6 +2,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using System.Threading.Tasks;
 using System;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AmdOnlyRts.Networking.Server
 {
@@ -9,7 +10,8 @@ namespace AmdOnlyRts.Networking.Server
   {
     private readonly IWebHost _webHost;
     private readonly int _port;
-    public GameServer(int port)
+    private readonly IServiceCollection _services;
+    public GameServer(int port, IServiceCollection services)
     {
       _port = port;
       _webHost = CreateWebHostBuilder(new string[] { }).Build();

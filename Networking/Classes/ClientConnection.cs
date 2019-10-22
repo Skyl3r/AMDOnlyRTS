@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AmdOnlyRts.Domain.Interfaces.GameEngine.Game;
 using AmdOnlyRts.Domain.Interfaces.Networking;
 using AmdOnlyRts.Networking.Client;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 
 namespace AmdOnlyRts.Networking.Classes
@@ -16,7 +17,7 @@ namespace AmdOnlyRts.Networking.Classes
 
     public ILobby CurrentLobby { get; private set; }
 
-    public ClientConnection(string address, int port)
+    public ClientConnection(string address, int port, IServiceCollection services)
     {
       _address = address;
       _gameClient = new GameClient(address, port);

@@ -11,6 +11,7 @@ namespace AmdOnlyRts.Core
   {
     public static IServiceCollection Bootstrap(this IServiceCollection services)
     {
+      services.AddSingleton(services);
       services.AddSingleton<IRenderer, LoveRenderer>();
       services.AddTransient<Program>();
       services.AddTransient<INetworkService, SignalRNetworkService>();

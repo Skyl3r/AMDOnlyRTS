@@ -5,6 +5,7 @@ using AmdOnlyRts.Networking.Server;
 using System.Linq;
 using System.Threading;
 using AmdOnlyRts.Domain.Interfaces.GameEngine.Game;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AmdOnlyRts.Networking.Classes
 {
@@ -12,10 +13,10 @@ namespace AmdOnlyRts.Networking.Classes
   {
     private readonly GameServer _gameServer;
 
-    public HostConnection(int port) : base("localhost", port)
+    public HostConnection(int port, IServiceCollection services) : base("localhost", port, services)
     {
 
-      _gameServer = new GameServer(port);
+      _gameServer = new GameServer(port, services);
     }
 
     public async new Task DisconnectAsync()
