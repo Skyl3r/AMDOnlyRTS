@@ -1,5 +1,6 @@
 ﻿using System;
-using AmdOnlyRts.Domain.Interfaces.GameEngine.GameObject.Structure;
+using AmdOnlyRts.Domain.Interfaces.GameEngine.Game;
+using AmdOnlyRts.Domain.Interfaces.GameEngine.GameObject.PlayerObject.Structure;
 
 namespace AmdOnlyRts.Core.Classes.GameEngine.GameObject.Structure
 {
@@ -8,8 +9,9 @@ namespace AmdOnlyRts.Core.Classes.GameEngine.GameObject.Structure
 		public string Description { get; set; }
 
 		public string Name { get; set; }
+        public IPlayer Owner { get; set; }
 
-		public void OnSelected()
+        public void OnSelected()
 		{
 			throw new NotImplementedException();
 		}

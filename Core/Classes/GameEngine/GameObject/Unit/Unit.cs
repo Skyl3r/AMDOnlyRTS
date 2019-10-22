@@ -1,4 +1,5 @@
-﻿using AmdOnlyRts.Domain.Interfaces.GameEngine.GameObject.Unit;
+﻿using AmdOnlyRts.Domain.Interfaces.GameEngine.Game;
+using AmdOnlyRts.Domain.Interfaces.GameEngine.GameObject.PlayerObject.Unit;
 using AmdOnlyRts.Domain.Interfaces.GameEngine.Map;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace AmdOnlyRts.Core.Classes.GameEngine.GameObject.Unit
 		public int MoveSpeed { get; set; }
 
 		public List<ITile> WalkableTiles { get; set; }
+        public IPlayer Owner { get; set; }
 
         public void OnAbility()
         {
