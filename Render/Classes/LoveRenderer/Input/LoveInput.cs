@@ -73,7 +73,15 @@ namespace AmdOnlyRts.Renderer.Classes.LoveRenderer.Input
             //Check Key Presses
             foreach(KeyConstant key in Enum.GetValues(typeof(KeyConstant))) {
                 if(Keyboard.IsDown(key)) {
-                    InputKeyPress(Enum.GetName(typeof(KeyConstant), key));
+                    string keyName = Enum.GetName(typeof(KeyConstant), key)
+                                    .Replace("Number", "")
+                                    .Replace("Keypad", "")
+                                    .Replace("Divide", "/")
+                                    .Replace("Multiply", "*")
+                                    .Replace("Minus", "-")
+                                    .Replace("Plus", "+");
+                    
+                    InputKeyPress(keyName);
                 }
             }
         }
