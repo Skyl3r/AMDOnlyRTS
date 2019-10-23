@@ -5,6 +5,7 @@ using AmdOnlyRts.Core.GameEngine.Map;
 using AmdOnlyRts.Domain.Interfaces.GameEngine.Game;
 using AmdOnlyRts.Domain.Interfaces.GameEngine.Map;
 using AmdOnlyRts.Domain.Interfaces.Renderer;
+using AmdOnlyRts.Domain.Interfaces.Renderer.Input;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
@@ -42,6 +43,7 @@ namespace AmdOnlyRts.Core
             _renderer.OnLoad += new OnLoad(OnRendererLoad);
             _renderer.OnDraw += new OnDraw(OnRendererDraw);
             _renderer.OnUpdate += new OnUpdate(OnRendererUpdate);
+            _renderer.Input.InputKeyPress += new InputKeyPress(OnKeyPress);
             _renderer.Start();
 
 
@@ -57,7 +59,7 @@ namespace AmdOnlyRts.Core
             camera.SetPosition(500, 299);
             camera.SetSize(1000, 600);
 
-            MapGenerator mapGenerator = new MapGenerator();
+            mapGenerator = new MapGenerator();
 
             Random randomSeed = new Random();
             int seed = 696969;//randomSeed.Next(0, 1000000);
@@ -104,5 +106,9 @@ namespace AmdOnlyRts.Core
         {
 
         }
+        
+        public void OnKeyPress(string key) {
+            Console.WriteLine(key);
+        } 
     }
 }

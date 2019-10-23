@@ -1,3 +1,4 @@
+using System;
 using AmdOnlyRts.Domain.Interfaces.Renderer.Input;
 using Love;
 
@@ -69,7 +70,20 @@ namespace AmdOnlyRts.Renderer.Classes.LoveRenderer.Input
                 mouseHeld = false;
             }
             
-            
+            //Check Key Presses
+            foreach(KeyConstant key in Enum.GetValues(typeof(KeyConstant))) {
+                if(Keyboard.IsDown(key)) {
+                    string keyName = Enum.GetName(typeof(KeyConstant), key)
+                                    .Replace("Number", "")
+                                    .Replace("Keypad", "")
+                                    .Replace("Divide", "/")
+                                    .Replace("Multiply", "*")
+                                    .Replace("Minus", "-")
+                                    .Replace("Plus", "+");
+                    
+                    InputKeyPress(keyName);
+                }
+            }
         }
 
     }
