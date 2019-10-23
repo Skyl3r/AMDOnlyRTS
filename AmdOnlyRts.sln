@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# 
+#
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmdOnlyRts.Core", "Core\AmdOnlyRts.Core.csproj", "{40C2A6C1-231A-4652-87CB-5C69A761A3EF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmdOnlyRts.Domain", "Domain\AmdOnlyRts.Domain.csproj", "{000531AD-5987-4168-9567-CEAD842E1B04}"
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmdOnlyRts.Scenes", "Scenes\AmdOnlyRts.Scenes.csproj", "{F0D3079D-8116-4435-BDCE-BBFD36A5A211}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmdOnlyRts.MathUtilities", "MathUtilities\AmdOnlyRts.MathUtilities.csproj", "{BB3767C1-C4E3-4094-9E38-03EDAC5DA4E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmdOnlyRts.Test", "Test\AmdOnlyRts.Test.csproj", "{694E6C4B-F38A-487B-A967-81CE1628EAD2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,5 +45,9 @@ Global
 		{BB3767C1-C4E3-4094-9E38-03EDAC5DA4E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB3767C1-C4E3-4094-9E38-03EDAC5DA4E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB3767C1-C4E3-4094-9E38-03EDAC5DA4E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{694E6C4B-F38A-487B-A967-81CE1628EAD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{694E6C4B-F38A-487B-A967-81CE1628EAD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{694E6C4B-F38A-487B-A967-81CE1628EAD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{694E6C4B-F38A-487B-A967-81CE1628EAD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

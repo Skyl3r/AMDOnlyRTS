@@ -11,6 +11,7 @@ namespace AmdOnlyRts.Networking.Server
     {
       services.Bootstrap();
       services.AddSignalR();
+      services.AddMvc();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -20,6 +21,7 @@ namespace AmdOnlyRts.Networking.Server
       app.UseRouting();
       app.UseEndpoints(cfg =>
       {
+        cfg.MapControllers();
         cfg.MapHub<GameHub>("/game");
       });
     }

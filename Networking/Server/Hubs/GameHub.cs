@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AmdOnlyRts.Domain.Classes.Networking;
 using AmdOnlyRts.Domain.Interfaces.GameEngine.Game;
+using AmdOnlyRts.Networking.Classes;
 using Microsoft.AspNetCore.SignalR;
 
 namespace AmdOnlyRts.Networking.Server.Hubs
@@ -20,13 +21,13 @@ namespace AmdOnlyRts.Networking.Server.Hubs
       await Clients.All.SendAsync("Chat", name, message);
     }
 
-    public async Task JoinLobby(Guid gameId, IPlayer player)
+    public async Task JoinLobby(Guid gameId, NetPlayer player)
     {
       _gameStateContainer.GameStates[gameId].Lobby.Players.Add(Context.ConnectionId, player);
       await Clients.Group(gameId.ToString()).SendAsync("PlayerJoin", gameId);
     }
 
-    public async Task CreateLobby(string name, IPlayer player)
+    public async Task CreateLobby(string name, NetPlayer player)
     {
       var gameId = Guid.NewGuid();
       _gameStateContainer.GameStates.Add(gameId, 

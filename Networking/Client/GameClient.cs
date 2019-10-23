@@ -47,7 +47,7 @@ namespace AmdOnlyRts.Networking.Client
 
     public void RegisterCallback(Action<string, string> callBack)
     {
-      _connection.On<string, string>("Send", callBack);
+      _connection.On("Send", callBack);
     }
 
     public void RegisterLobbyUpdateCallback(Action<Guid> callBack)

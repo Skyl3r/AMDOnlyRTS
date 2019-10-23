@@ -8,6 +8,11 @@ namespace AmdOnlyRts.Domain.Classes.Networking
   {
     public Dictionary<Guid, GameState> GameStates { get; set; }
 
+    public GameStateContainer()
+    {
+        GameStates = new Dictionary<Guid, GameState>();
+    }
+
     public string PlayerLeave(string connectionId)
     {
       var gameState = GameStates.Values

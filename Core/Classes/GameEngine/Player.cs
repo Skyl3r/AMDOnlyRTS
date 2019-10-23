@@ -4,7 +4,7 @@ namespace AmdOnlyRts.Core.GameEngine
 {
   public class Player : IPlayer
   {
-    public string DisplayName { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-    public string TeamName { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public string DisplayName { get; set; }
+    public string TeamName { get; set; }
   }
 }

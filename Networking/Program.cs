@@ -9,13 +9,14 @@ namespace AmdOnlyRts.Networking
     {
         public static void Main()
         {
-          new Program().Run().Wait();
+          new Program().Run();
+          Console.ReadKey();
         }
 
-        public async Task Run()
+        public void Run()
         {
-          //var server = new GameServer(25565);
-          //await server.StartAsync();
+          var server = new GameServer(25565);
+          server.StartAsync();
 
           //var client = new GameClient("localhost", 25565);
           //client.RegisterCallback((x,y)=> Console.WriteLine($"{x}: {y}"));

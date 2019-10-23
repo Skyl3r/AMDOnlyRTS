@@ -2,6 +2,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using System.Threading.Tasks;
 using System;
+using System.Threading;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,13 +12,11 @@ namespace AmdOnlyRts.Networking.Server
   {
     private readonly IWebHost _webHost;
     private readonly int _port;
-    private readonly ILogger<GameServer> _log;
-    public GameServer(int port, IServiceProvider container)
+    public GameServer(int port)
     {
-      _log = container.GetService<ILogger<GameServer>>();
-      _log.LogDebug($"Starting game server on port: {port}");
       _port = port;
       _webHost = CreateWebHostBuilder(new string[] { }).Build();
+      
     }
     public Task StartAsync()
     {
@@ -31,7 +30,12 @@ namespace AmdOnlyRts.Networking.Server
 
     private IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         WebHost.CreateDefaultBuilder(args)
-            .UseUrls("http://localhost:" + _port)
+          .ConfigureLogging(x =>
+          {
+            x.SetMinimumLevel(LogLevel.Debug);
+            x.AddConsole();
+          })
+          .UseUrls("http://localhost:" + _port)
             .UseStartup<Startup>();
 
     public void Dispose()

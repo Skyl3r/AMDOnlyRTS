@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using AmdOnlyRts.Domain.Classes.Networking;
 using AmdOnlyRts.Domain.Interfaces.GameEngine.Game;
 using AmdOnlyRts.Domain.Interfaces.Networking;
 using AmdOnlyRts.Networking.Client;
@@ -15,6 +16,7 @@ namespace AmdOnlyRts.Networking.Classes
     public class ClientConnection : IConnection
     {
         private readonly string _address;
+        private readonly int _port;
         private readonly GameClient _gameClient;
         private readonly ILogger<ClientConnection> _log;
 
@@ -24,10 +26,11 @@ namespace AmdOnlyRts.Networking.Classes
         {
             _log = container.GetService<ILogger<ClientConnection>>();
             _address = address;
+            _port = port;
             _gameClient = new GameClient(address, port);
         }
 
-        public Task DisconnectAsync()
+        public virtual Task DisconnectAsync()
         {
             _log.LogDebug("Stopping client connection");
             return _gameClient.StopAsync();
@@ -48,17 +51,21 @@ namespace AmdOnlyRts.Networking.Classes
         {
         }
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             _gameClient.Dispose();
         }
 
-        public async Task ConnectAsync(Guid gameId, IPlayer player)
+        public virtual Task ConnectAsync()
         {
             _gameClient.RegisterCallback(QueueAction);
             _gameClient.RegisterLobbyUpdateCallback(UpdateLobby);
-            await _gameClient.StartAsync();
-            await _gameClient.JoinLobby(gameId, player);
+            return _gameClient.StartAsync();
+        }
+
+        public Task JoinLobby(Guid gameId, IPlayer player)
+        {
+            return _gameClient.JoinLobby(gameId, player);
         }
 
         public Task CreateLobby(string name, IPlayer player)
@@ -86,7 +93,7 @@ namespace AmdOnlyRts.Networking.Classes
         public async Task<IEnumerable<ILobby>> GetLobbyListing()
         {
             using var httpClient = new HttpClient();
-            var response = await httpClient.GetAsync($"http://{_address}/api/lobby");
+            var response = await httpClient.GetAsync($"http://{_address}:{_port}/api/lobby");
 
             if (!response.IsSuccessStatusCode)
             {
@@ -95,8 +102,8 @@ namespace AmdOnlyRts.Networking.Classes
             }
             
             var responseString = await response.Content.ReadAsStringAsync();
-            var lobbies = JsonConvert.DeserializeObject<IEnumerable<ILobby>>(responseString);
-            _log.LogDebug($"Successfully got the lobby listing, found {lobbies.Count()} lobbies.");
+            var lobbies = JsonConvert.DeserializeObject<List<GameLobby>>(responseString);
+            _log.LogDebug($"Successfully got the lobby listing, found {lobbies.Count} lobbies.");
             return lobbies;
         }
     }

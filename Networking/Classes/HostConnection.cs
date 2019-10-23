@@ -18,30 +18,33 @@ namespace AmdOnlyRts.Networking.Classes
     public HostConnection(int port, IServiceProvider container) : base("localhost", port, container)
     {
       _log = container.GetService<ILogger<HostConnection>>();
-      _gameServer = new GameServer(port, container);
+      _gameServer = new GameServer(port);
     }
 
-    public async new Task DisconnectAsync()
+    public override Task DisconnectAsync()
     { 
       _log.LogDebug("Disconnecting HostConnection");
-      await _gameServer.StopAsync();
-      await base.DisconnectAsync();
+      _gameServer.StopAsync();
+      return base.DisconnectAsync();
     }
 
-    public new void Dispose()
+    public override void Dispose()
     {
       _gameServer.Dispose();
+      base.Dispose();
     }
 
-    public async new Task ConnectAsync(Guid gameId, IPlayer player)
+    public async Task ConnectAsync(Guid gameId, IPlayer player)
     {
-      _log.LogDebug($"Creating local game for player {player.DisplayName}");
+      _log.LogDebug($"Creating server for player {player.DisplayName}");
       await _gameServer.StartAsync();
+      _log.LogDebug($"Connecting to local server");
+      await base.ConnectAsync();
       _log.LogDebug("Creating lobby");
       await base.CreateLobby($"{player.DisplayName}'s local game", player);
       var lobby = await GetLocalLobby();
       _log.LogDebug($"Lobby created with ID {lobby.GameId}");
-      await base.ConnectAsync(lobby.GameId, player);
+      await base.JoinLobby(lobby.GameId, player);
     }
 
     private async Task<ILobby> GetLocalLobby(int timeout = 0)

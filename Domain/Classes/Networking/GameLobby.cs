@@ -14,6 +14,6 @@ namespace AmdOnlyRts.Domain.Classes.Networking
 
     public Dictionary<string, IPlayer> Players { get; set; }
     public Guid GameId { get; set; }
-    public string DisplayName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public string DisplayName { get; set; }
 	}
 }

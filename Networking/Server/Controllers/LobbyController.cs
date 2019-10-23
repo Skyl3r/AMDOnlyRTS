@@ -14,7 +14,7 @@ namespace AmdOnlyRts.Networking.Server.Controllers
       _gameStateContainer = gameStateContainer;
     }
 
-    [HttpGet()]
+    [HttpGet("{gameId?}")]
     public IActionResult GetLobby(Guid? gameId = null)
     {
       if (!gameId.HasValue)
@@ -23,7 +23,12 @@ namespace AmdOnlyRts.Networking.Server.Controllers
           .Select(gs => gs.Value.Lobby));
       }
 
-      return Ok(_gameStateContainer.GameStates[gameId.Value].Lobby);
+      if (_gameStateContainer.GameStates.ContainsKey(gameId.Value))
+      {
+        return Ok(_gameStateContainer.GameStates[gameId.Value].Lobby);
+      }
+
+      return BadRequest("That game id doesnt exist");
     }
   }
 }
