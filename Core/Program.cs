@@ -57,7 +57,7 @@ namespace AmdOnlyRts.Core
             camera.SetPosition(500, 299);
             camera.SetSize(1000, 600);
 
-            MapGenerator mapGenerator = new MapGenerator();
+            mapGenerator = new MapGenerator();
 
             Random randomSeed = new Random();
             int seed = 696969;//randomSeed.Next(0, 1000000);

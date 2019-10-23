@@ -1,3 +1,4 @@
+using System;
 using AmdOnlyRts.Domain.Interfaces.Renderer.Input;
 using Love;
 
@@ -69,7 +70,12 @@ namespace AmdOnlyRts.Renderer.Classes.LoveRenderer.Input
                 mouseHeld = false;
             }
             
-            
+            //Check Key Presses
+            foreach(int key in Enum.GetValues(typeof(KeyConstant))) {
+                if(Keyboard.IsDown((KeyConstant)key)) {
+                    InputKeyPress(key);
+                }
+            }
         }
 
     }
