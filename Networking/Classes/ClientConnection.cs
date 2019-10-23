@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using AmdOnlyRts.Domain.Classes.Networking;
 using AmdOnlyRts.Domain.Interfaces.GameEngine.Game;
@@ -83,14 +84,14 @@ namespace AmdOnlyRts.Networking.Classes
             {
                 _log.LogDebug("Updated lobby successfully");
                 var responseString = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                CurrentLobby = JsonConvert.DeserializeObject<ILobby>(responseString);
+                CurrentLobby = JsonConvert.DeserializeObject<NetLobby>(responseString);
             }
 
             _log.LogError($"There was a problem updating the lobby for game: {gameId}. got {response.StatusCode}");
             throw new Exception("There was a problem when making the request");
         }
 
-        public async Task<IEnumerable<ILobby>> GetLobbyListing()
+        public async Task<IEnumerable<NetLobby>> GetLobbyListing()
         {
             using var httpClient = new HttpClient();
             var response = await httpClient.GetAsync($"http://{_address}:{_port}/api/lobby");
@@ -102,9 +103,24 @@ namespace AmdOnlyRts.Networking.Classes
             }
             
             var responseString = await response.Content.ReadAsStringAsync();
-            var lobbies = JsonConvert.DeserializeObject<List<GameLobby>>(responseString);
+            var lobbies = JsonConvert.DeserializeObject<List<NetLobby>>(responseString);
             _log.LogDebug($"Successfully got the lobby listing, found {lobbies.Count} lobbies.");
             return lobbies;
+        }
+        
+        public async Task<NetLobby> GetLocalLobby(int timeout = 0)
+        {
+            var lobby = (await GetLobbyListing()).FirstOrDefault();
+            if(lobby == null)
+            {
+                if(timeout > 400)
+                {
+                    throw new Exception("Failed to get local lobby");
+                }
+                Thread.Sleep(timeout);
+                return await GetLocalLobby(timeout+=100);
+            }
+            return lobby;
         }
     }
 }

@@ -5,15 +5,14 @@ using AmdOnlyRts.Domain.Interfaces.Networking;
 
 namespace AmdOnlyRts.Domain.Classes.Networking
 {
-	public class GameLobby : ILobby
-	{
-    public GameLobby()
-		{
-			Players = new Dictionary<string, IPlayer> ();
-		}
+    public class GameLobby : ILobby
+    {
+        public GameLobby()
+        {
+            Players = new List<IPlayer>();
+        }
 
-    public Dictionary<string, IPlayer> Players { get; set; }
-    public Guid GameId { get; set; }
-    public string DisplayName { get; set; }
-	}
+        public IEnumerable<IPlayer> Players { get; }
+        public string DisplayName { get; set; }
+    }
 }

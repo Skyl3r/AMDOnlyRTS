@@ -2,11 +2,11 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace AmdOnlyRts.Domain.Classes.Networking
+namespace AmdOnlyRts.Networking.Classes
 {
   public class GameStateContainer
   {
-    public Dictionary<Guid, GameState> GameStates { get; set; }
+    public Dictionary<Guid, GameState> GameStates { get; }
 
     public GameStateContainer()
     {
@@ -16,10 +16,10 @@ namespace AmdOnlyRts.Domain.Classes.Networking
     public string PlayerLeave(string connectionId)
     {
       var gameState = GameStates.Values
-        .SingleOrDefault(x => x.Lobby.Players.ContainsKey(connectionId));
+        .SingleOrDefault(x => x.Lobby.NetPlayers.ContainsKey(connectionId));
       if (gameState != null)
       {
-        gameState.Lobby.Players.Remove(connectionId);
+        gameState.Lobby.NetPlayers.Remove(connectionId);
         return gameState.GameId.ToString();
       }
       return null;

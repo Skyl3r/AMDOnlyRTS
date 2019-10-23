@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using AmdOnlyRts.Domain.Classes.Networking;
-using AmdOnlyRts.Domain.Interfaces.GameEngine.Game;
 using AmdOnlyRts.Networking.Classes;
 using Microsoft.AspNetCore.SignalR;
 
@@ -23,7 +21,7 @@ namespace AmdOnlyRts.Networking.Server.Hubs
 
     public async Task JoinLobby(Guid gameId, NetPlayer player)
     {
-      _gameStateContainer.GameStates[gameId].Lobby.Players.Add(Context.ConnectionId, player);
+      _gameStateContainer.GameStates[gameId].Lobby.NetPlayers.Add(Context.ConnectionId, player);
       await Clients.Group(gameId.ToString()).SendAsync("PlayerJoin", gameId);
     }
 
@@ -35,14 +33,10 @@ namespace AmdOnlyRts.Networking.Server.Hubs
         {
           GameId = gameId,
           GamePhase= Domain.Enums.GamePhase.Lobby,
-          Lobby = new GameLobby
+          Lobby = new NetLobby
           {
             DisplayName = name,
-            GameId = gameId,
-            Players = new Dictionary<string, IPlayer>
-            {
-              { Context.ConnectionId, player}
-            }
+            GameId = gameId
           }
 
         });

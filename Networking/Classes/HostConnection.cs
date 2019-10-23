@@ -42,25 +42,11 @@ namespace AmdOnlyRts.Networking.Classes
       await base.ConnectAsync();
       _log.LogDebug("Creating lobby");
       await base.CreateLobby($"{player.DisplayName}'s local game", player);
-      var lobby = await GetLocalLobby();
+      var lobby = await base.GetLocalLobby();
       _log.LogDebug($"Lobby created with ID {lobby.GameId}");
       await base.JoinLobby(lobby.GameId, player);
     }
 
-    private async Task<ILobby> GetLocalLobby(int timeout = 0)
-    {
-      var lobby = (await base.GetLobbyListing()).FirstOrDefault();
-      if(lobby == null)
-      {
-        if(timeout > 400)
-        {
-          throw new Exception("Failed to get local lobby");
-        }
-        Thread.Sleep(timeout);
-        return await GetLocalLobby(timeout+=100);
-      }
-      return lobby;
-    }
 
     public Task ConnectDedicatedAsync()
     {

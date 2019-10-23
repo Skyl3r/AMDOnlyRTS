@@ -2,6 +2,7 @@ using AmdOnlyRts.Domain.Classes.Networking;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
+using AmdOnlyRts.Networking.Classes;
 
 namespace AmdOnlyRts.Networking.Server.Controllers
 {

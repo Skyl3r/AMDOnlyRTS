@@ -1,13 +1,12 @@
 using System;
 using AmdOnlyRts.Domain.Enums;
-using AmdOnlyRts.Domain.Interfaces.Networking;
 
-namespace AmdOnlyRts.Domain.Classes.Networking
+namespace AmdOnlyRts.Networking.Classes
 {
   public class GameState
   {
     public Guid GameId { get; set; }
     public GamePhase GamePhase { get; set; }
-    public ILobby Lobby { get; set; }
+    public NetLobby Lobby { get; set; }
   }
 }

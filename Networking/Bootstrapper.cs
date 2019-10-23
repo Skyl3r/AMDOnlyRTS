@@ -1,4 +1,4 @@
-using AmdOnlyRts.Domain.Classes.Networking;
+using AmdOnlyRts.Networking.Classes;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AmdOnlyRts.Networking

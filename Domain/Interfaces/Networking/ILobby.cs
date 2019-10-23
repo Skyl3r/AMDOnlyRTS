@@ -6,9 +6,7 @@ namespace AmdOnlyRts.Domain.Interfaces.Networking
 {
 	public interface ILobby
 	{
-		Dictionary<string, IPlayer> Players { get; }
-
-		Guid GameId { get; }
+		IEnumerable<IPlayer> Players { get; }
 		string DisplayName { get; }
 	}
 }
