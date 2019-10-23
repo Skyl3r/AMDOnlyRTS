@@ -71,9 +71,9 @@ namespace AmdOnlyRts.Renderer.Classes.LoveRenderer.Input
             }
             
             //Check Key Presses
-            foreach(int key in Enum.GetValues(typeof(KeyConstant))) {
-                if(Keyboard.IsDown((KeyConstant)key)) {
-                    InputKeyPress(key);
+            foreach(KeyConstant key in Enum.GetValues(typeof(KeyConstant))) {
+                if(Keyboard.IsDown(key)) {
+                    InputKeyPress(Enum.GetName(typeof(KeyConstant), key));
                 }
             }
         }

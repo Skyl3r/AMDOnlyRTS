@@ -6,7 +6,7 @@ namespace AmdOnlyRts.Domain.Interfaces.Renderer.Input
     public delegate void InputMouseClick(int x, int y);
     public delegate void InputSelectionBox(int x, int y, int width, int height
 );
-    public delegate void InputKeyPress(int key);
+    public delegate void InputKeyPress(string key);
 
     public interface IInput
     {
