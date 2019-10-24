@@ -6,6 +6,7 @@ using AmdOnlyRts.Domain.Interfaces.GameEngine.Game;
 using AmdOnlyRts.Domain.Interfaces.GameEngine.Map;
 using AmdOnlyRts.Domain.Interfaces.Renderer;
 using AmdOnlyRts.Domain.Interfaces.Renderer.Input;
+using AmdOnlyRts.Renderer.Classes.LoveRenderer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
@@ -18,6 +19,7 @@ namespace AmdOnlyRts.Core
         private MapGenerator mapGenerator;
         private ICamera camera;
         private ITileMap tileMap;
+        private ITileMapIndex tileMapIndex;
 
 
         public Program(IRenderer renderer, ILogger<Program> log)
@@ -90,12 +92,19 @@ namespace AmdOnlyRts.Core
 
             tileMap = mapGenerator.NewTileMap(noiseMap, distributionMap);
 
+            tileMapIndex = new TileMapIndex();
+            tileMapIndex.Add(0, new Drawable("Mod/Default/Tiles/dirt.png"));
+            tileMapIndex.Add(1, new Drawable("Mod/Default/Tiles/grass.png"));
+            tileMapIndex.Add(2, new Drawable("Mod/Default/Tiles/grass2.png"));
+            tileMapIndex.Add(3, new Drawable("Mod/Default/Tiles/rock.png"));
+            _renderer.Graphics.LoadTiles(tileMapIndex);
+
         }
 
         public void OnRendererDraw()
         {
             
-            _renderer.Graphics.DrawTileMap(camera, tileMap);
+            _renderer.Graphics.DrawTileMap(camera, tileMap, tileMapIndex);
 
             //Move the camera slowly to test scrolling
             //camera.SetPosition(camera.Position.X + 0.3f, camera.Position.Y + 0.3f);
@@ -108,7 +117,7 @@ namespace AmdOnlyRts.Core
         }
         
         public void OnKeyPress(string key) {
-            Console.WriteLine(key);
+            
         } 
     }
 }

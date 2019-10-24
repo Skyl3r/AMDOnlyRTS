@@ -1,4 +1,6 @@
 
+using System;
+using System.Collections.Generic;
 using AmdOnlyRts.Domain.Interfaces.GameEngine.Game;
 using AmdOnlyRts.Domain.Interfaces.GameEngine.Map;
 using AmdOnlyRts.Domain.Interfaces.Renderer;
@@ -8,20 +10,31 @@ namespace AmdOnlyRts.Renderer.Classes.LoveRenderer
 {
     public class LoveGraphics : IGraphics
     {
-
-        LoveTileInfo tileInfo;
+        LoveTextureManager loveTextureManager;
 
         public LoveGraphics()
         {
-
+            loveTextureManager = new LoveTextureManager();
         }
 
-        public void LoadTiles() {
-
-            tileInfo = new LoveTileInfo();
+        public void Load(IDrawable drawable) {
+            loveTextureManager.Load(drawable);
         }
 
-        public void DrawTileMap(ICamera camera, ITileMap tileMap)
+        public void Draw(IDrawable drawable, int x, int y) {
+            Love.Graphics.Draw(loveTextureManager.Get(drawable), x, y);
+        }
+        public void Draw(IDrawable drawable, int x, int y, float sx, float sy) {
+            Love.Graphics.Draw(loveTextureManager.Get(drawable), x, y, 0, sx, sy);
+        }
+
+        public void LoadTiles(ITileMapIndex tileMapIndex) {
+            foreach(KeyValuePair<int, IDrawable> item in tileMapIndex.Tiles) {
+                Load(item.Value);
+            }
+        }
+
+        public void DrawTileMap(ICamera camera, ITileMap tileMap, ITileMapIndex tileMapIndex)
         {
             int defaultTileSize = 32; //Temporary
             float tileSize = camera.Zoom * (float)defaultTileSize;
@@ -52,7 +65,6 @@ namespace AmdOnlyRts.Renderer.Classes.LoveRenderer
                     if (y >= tileMap.Height || y < 0) break;
 
                     ITile tile = tileMap.Data[x, y];
-                    Love.Image image = tileInfo.GetImage(tile.TypeId);
 
                     //Position data for tile
                     //Camera offset since the minimum viewable tile will likely be partly off screen
@@ -68,7 +80,7 @@ namespace AmdOnlyRts.Renderer.Classes.LoveRenderer
                     _x -= (int)((defaultTileSize - tileSize)/2);
                     _y -= (int)((defaultTileSize - tileSize)/2);
 
-                    Love.Graphics.Draw(image, _x, _y, 0, camera.Zoom, camera.Zoom);
+                    Draw(tileMapIndex.GetTile(tile.TypeId), _x, _y, camera.Zoom, camera.Zoom);
                 }
             }
         }
@@ -82,6 +94,7 @@ namespace AmdOnlyRts.Renderer.Classes.LoveRenderer
             //Love.Graphics.SetColor(new Color(0, 255, 0 , 255));
             Love.Graphics.Rectangle(DrawMode.Fill, x, y, width, height);
         }
+
     }
 
 

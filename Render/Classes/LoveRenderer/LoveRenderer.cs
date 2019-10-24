@@ -34,7 +34,6 @@ namespace AmdOnlyRts.Renderer.Classes.LoveRenderer
         }
 
         public override void Load() {
-            Graphics.LoadTiles();
             OnLoad();
         }
 
