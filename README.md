@@ -1,5 +1,5 @@
 # AMD Only RTS
-This is a highly moddable, cross platform and open source RTS game (That only runs on AMD).
+This is a highly moddable, cross platform and open source RTS game (That only runs on AMD). The core idea is that every feature is built behind interfaces allowing a high level of abstraction between things such as Graphics and Rendering and the Game Engine itself.
 
 
 ## Index
