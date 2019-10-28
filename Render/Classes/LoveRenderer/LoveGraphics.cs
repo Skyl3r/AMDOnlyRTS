@@ -1,5 +1,3 @@
-
-using System;
 using System.Collections.Generic;
 using AmdOnlyRts.Domain.Interfaces.GameEngine.Game;
 using AmdOnlyRts.Domain.Interfaces.GameEngine.Map;
