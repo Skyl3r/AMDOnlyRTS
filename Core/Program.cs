@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.IO;
 using AmdOnlyRts.Core.GameEngine;
 using AmdOnlyRts.Core.GameEngine.Map;
 using AmdOnlyRts.Domain.Interfaces.GameEngine.Game;
@@ -21,6 +22,12 @@ namespace AmdOnlyRts.Core
         private ITileMap tileMap;
         private ITileMapIndex tileMapIndex;
 
+
+        int x = 0;
+        int y = 0;
+
+        int width = 0;
+        int height = 0;
 
         public Program(IRenderer renderer, ILogger<Program> log)
         {
@@ -45,7 +52,14 @@ namespace AmdOnlyRts.Core
             _renderer.OnLoad += new OnLoad(OnRendererLoad);
             _renderer.OnDraw += new OnDraw(OnRendererDraw);
             _renderer.OnUpdate += new OnUpdate(OnRendererUpdate);
+            
+            //Inputs
             _renderer.Input.InputKeyPress += new InputKeyPress(OnKeyPress);
+            _renderer.Input.InputSelectionBox += new InputSelectionBox(OnSelectionBox);
+            _renderer.Input.InputMouseDown += new InputMouseDown(OnMouseDown);
+            _renderer.Input.InputMouseClick += new InputMouseClick(OnClick);
+
+
             _renderer.Start();
 
 
@@ -87,16 +101,18 @@ namespace AmdOnlyRts.Core
             distributionMap.addType(0, 10);
             distributionMap.addType(1, 15);
             distributionMap.addType(2, 25);
+            distributionMap.addType(3, 25);
 
             //Create the tile map
-
             tileMap = mapGenerator.NewTileMap(noiseMap, distributionMap);
 
+            Console.WriteLine("Current directory: " + Directory.GetCurrentDirectory());
             tileMapIndex = new TileMapIndex();
-            tileMapIndex.Add(0, new Drawable("Mod/Default/Tiles/dirt.png"));
-            tileMapIndex.Add(1, new Drawable("Mod/Default/Tiles/grass.png"));
-            tileMapIndex.Add(2, new Drawable("Mod/Default/Tiles/grass2.png"));
-            tileMapIndex.Add(3, new Drawable("Mod/Default/Tiles/rock.png"));
+            tileMapIndex.Add(0, new Drawable("Core/Mod/Default/Tiles/dirt.png"));
+            tileMapIndex.Add(1, new Drawable("Core/Mod/Default/Tiles/grass.png"));
+            tileMapIndex.Add(2, new Drawable("Core/Mod/Default/Tiles/grass2.png"));
+            tileMapIndex.Add(3, new Drawable("Core/Mod/Default/Tiles/rock.png"));
+
             _renderer.Graphics.LoadTiles(tileMapIndex);
 
         }
@@ -105,10 +121,22 @@ namespace AmdOnlyRts.Core
         {
             
             _renderer.Graphics.DrawTileMap(camera, tileMap, tileMapIndex);
+            _renderer.Graphics.DrawRect(width, height, x, y, new Color(0, 255, 0, 1f));
+            _renderer.Graphics.FillRect(width, height, x, y, new Color(0, 255, 0, 0.5f));
 
             //Move the camera slowly to test scrolling
             //camera.SetPosition(camera.Position.X + 0.3f, camera.Position.Y + 0.3f);
-            camera.Zoom -= 0.001f;
+            //camera.Zoom -= 0.001f;
+
+            if(_renderer.Input.MouseState.X < 5) 
+                camera.SetPosition(camera.Position.X - 0.3f, camera.Position.Y);
+            if(_renderer.Input.MouseState.Y < 5) 
+                camera.SetPosition(camera.Position.X, camera.Position.Y - 0.3f);
+            if(_renderer.Input.MouseState.X > _renderer.width - 5)
+                camera.SetPosition(camera.Position.X + 0.3f, camera.Position.Y);
+            if(_renderer.Input.MouseState.Y > _renderer.height - 5)
+                camera.SetPosition(camera.Position.X, camera.Position.Y + 0.3f);
+            
         }
 
         public void OnRendererUpdate()
@@ -117,7 +145,28 @@ namespace AmdOnlyRts.Core
         }
         
         public void OnKeyPress(string key) {
-            
+            Console.WriteLine("Key pressed: " + key);
         } 
+
+        public void OnSelectionBox(int x, int y, int width, int height) {
+            Console.WriteLine("Selection box: (" + x + ", " + y + ", " + width + ", " + height + ")");
+
+            this.x = 0;
+            this.y = 0;
+            this.width = 0;
+            this.height = 0;
+        }
+
+        public void OnClick(int x, int y) {
+            Console.WriteLine("Click: (" + x + ", " + y + ")");
+
+        }
+
+        public void OnMouseDown(int x, int y, int width, int height) {
+            this.x = x;
+            this.y = y;
+            this.width = width;
+            this.height = height;
+        }
     }
 }

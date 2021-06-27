@@ -13,6 +13,8 @@ namespace AmdOnlyRts.Renderer.Classes.LoveRenderer
 
         public IGraphics Graphics { get; set; }
         public IInput Input { get; set; }
+        public int width { get; set; }
+        public int height { get; set; }
 
         public LoveRenderer() {
             Graphics = new LoveGraphics();
@@ -34,9 +36,17 @@ namespace AmdOnlyRts.Renderer.Classes.LoveRenderer
         }
 
         public override void Load() {
+            width = Love.Graphics.GetWidth();
+            height = Love.Graphics.GetHeight();
             OnLoad();
         }
 
+        public void setSize(int width, int height)
+        {
+            Love.Window.SetMode(width, height);
+            this.width = width;
+            this.height = height;
+        }
     }
 
     

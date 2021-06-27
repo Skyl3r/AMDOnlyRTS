@@ -16,6 +16,11 @@ namespace AmdOnlyRts.Domain.Interfaces.Renderer
 
     IInput Input { get; set; }
     IGraphics Graphics { get; set; }
+
+    int width { get; set; }
+    int height { get; set; }
+
+    void setSize(int width, int height);
     void Start();
     
   }

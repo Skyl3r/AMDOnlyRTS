@@ -8,7 +8,10 @@ namespace AmdOnlyRts.Renderer.Classes.LoveRenderer.Input
     {
         public event InputMouseClick InputMouseClick;
         public event InputSelectionBox InputSelectionBox;
+        public event InputMouseDown InputMouseDown;
         public event InputKeyPress InputKeyPress;
+
+        public IMouseState MouseState { get; set; }
 
         //represents previous frame mouse state
         LoveMouseState[] mouseDownHistory;
@@ -18,56 +21,73 @@ namespace AmdOnlyRts.Renderer.Classes.LoveRenderer.Input
         public LoveInput()
         {
             mouseDownHistory = new LoveMouseState[2] { new LoveMouseState(), new LoveMouseState() };
-
+            
             mouseHeld = false; //Remember if the mouse is being held
             mouseButton = Mouse.LeftButton;
         }
 
         public void Update() {
-            mouseDownHistory[1] = mouseDownHistory[0];
-            mouseDownHistory[0] = new LoveMouseState((int)Mouse.GetX(), (int)Mouse.GetY(), Mouse.IsPressed(mouseButton));
+            //Update public mouse state
+            MouseState = new LoveMouseState((int)Mouse.GetX(), (int)Mouse.GetY(), Mouse.IsDown(mouseButton));
 
-            //First frame of click
-            if(mouseDownHistory[0].IsPressed && !mouseDownHistory[1].IsPressed) { 
-                
-            }
+            mouseDownHistory[0] = new LoveMouseState((int)Mouse.GetX(), (int)Mouse.GetY(), Mouse.IsDown(mouseButton));
 
-            //Mouse is being held
-            if(mouseDownHistory[0].IsPressed && mouseDownHistory[1].IsPressed) {
-                mouseHeld = true;
+            //On initial click, save click history:
+            if(mouseDownHistory[0].IsPressed && !mouseDownHistory[1].IsPressed) {
+                mouseDownHistory[1].X = mouseDownHistory[0].X;
+                mouseDownHistory[1].Y = mouseDownHistory[0].Y;
+                mouseDownHistory[1].IsPressed = mouseDownHistory[0].IsPressed;
             }
 
             //Mouse was released
             if(!mouseDownHistory[0].IsPressed && mouseDownHistory[1].IsPressed) {
-
-                //Mouse was clicked
-                if(!mouseHeld) {
-                    InputMouseClick(mouseDownHistory[0].X, mouseDownHistory[0].Y);
+                int x, y, width, height;
+                if(mouseDownHistory[0].X > mouseDownHistory[1].X) {
+                    x       = mouseDownHistory[1].X;
+                    width   = mouseDownHistory[0].X - x;
+                } else {
+                    x       = mouseDownHistory[0].X;
+                    width   = mouseDownHistory[1].X - x;
+                }
+                
+                if(mouseDownHistory[0].Y > mouseDownHistory[1].Y) {
+                    y       = mouseDownHistory[1].Y;
+                    height  = mouseDownHistory[0].Y - y;
+                } else {
+                    y       = mouseDownHistory[0].Y;
+                    height  = mouseDownHistory[1].Y - y;
                 }
 
-                //Mouse was held
-                if(mouseHeld) {
-                    int x, y, width, height;
-                    if(mouseDownHistory[0].X > mouseDownHistory[1].X) {
-                        x       = mouseDownHistory[1].X;
-                        width   = mouseDownHistory[0].X - x;
-                    } else {
-                        x       = mouseDownHistory[0].X;
-                        width   = mouseDownHistory[1].X - x;
-                    }
-                    
-                    if(mouseDownHistory[0].Y > mouseDownHistory[1].Y) {
-                        y       = mouseDownHistory[1].Y;
-                        height  = mouseDownHistory[0].Y - y;
-                    } else {
-                        y       = mouseDownHistory[0].Y;
-                        height  = mouseDownHistory[1].Y - y;
-                    }
-                    
-                    InputSelectionBox(x, y, width, height);
+                //If they didn't mouse the mouse, treat it as a click
+                if(width < 2 && height < 2)
+                    InputMouseClick?.Invoke(x, y);
+                else
+                    InputSelectionBox?.Invoke(x, y, width, height);
+
+                //Reset click state of mouse history
+                mouseDownHistory[1].IsPressed = false;
+            }
+
+            //Mouse down
+            if(mouseDownHistory[1].IsPressed) {
+                int x, y, width, height;
+                if(mouseDownHistory[0].X > mouseDownHistory[1].X) {
+                    x       = mouseDownHistory[1].X;
+                    width   = mouseDownHistory[0].X - x;
+                } else {
+                    x       = mouseDownHistory[0].X;
+                    width   = mouseDownHistory[1].X - x;
+                }
+                
+                if(mouseDownHistory[0].Y > mouseDownHistory[1].Y) {
+                    y       = mouseDownHistory[1].Y;
+                    height  = mouseDownHistory[0].Y - y;
+                } else {
+                    y       = mouseDownHistory[0].Y;
+                    height  = mouseDownHistory[1].Y - y;
                 }
 
-                mouseHeld = false;
+                InputMouseDown?.Invoke(x, y, width, height);
             }
             
             //Check Key Presses
@@ -81,7 +101,7 @@ namespace AmdOnlyRts.Renderer.Classes.LoveRenderer.Input
                                     .Replace("Minus", "-")
                                     .Replace("Plus", "+");
                     
-                    InputKeyPress(keyName);
+                    InputKeyPress?.Invoke(keyName);
                 }
             }
         }

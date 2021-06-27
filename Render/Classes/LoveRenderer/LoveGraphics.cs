@@ -83,14 +83,22 @@ namespace AmdOnlyRts.Renderer.Classes.LoveRenderer
             }
         }
 
-        public void DrawText(string text, int x, int y)
+        public void DrawText(string text, int x, int y, IColor color)
         {
             Love.Graphics.Print(text, x, y);
         }
-        public void DrawRect(float width, float height, float x, float y)
+        public void DrawRect(float width, float height, float x, float y, IColor color)
         {
-            //Love.Graphics.SetColor(new Color(0, 255, 0 , 255));
+            Love.Graphics.SetColor(color.r, color.g, color.b, color.alpha);
+            Love.Graphics.Rectangle(DrawMode.Line, x, y, width, height);
+            Love.Graphics.SetColor(255, 255, 255);
+        }
+
+        public void FillRect(float width, float height, float x, float y, IColor color)
+        {
+            Love.Graphics.SetColor(color.r, color.g, color.b, color.alpha);
             Love.Graphics.Rectangle(DrawMode.Fill, x, y, width, height);
+            Love.Graphics.SetColor(255, 255, 255);
         }
 
     }
